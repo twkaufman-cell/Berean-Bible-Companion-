@@ -55,7 +55,7 @@ body{background:var(--bg);font-family:Georgia,serif;overflow:hidden;height:100vh
 </head>
 <body>
 <div class="tb">
-<div class="tt"><span class="c">&#10022;</span><span class="brand-full">Berean Bible Companion</span><span class="brand-short">Berean</span></div>
+<div class="tt"><span class="c">&#10022;</span><span class="brand-full">Berean Bible Companion</span><span class="brand-short">Berean Bible Companion</span></div>
 <div class="ts" id="tabStrip">
 <button class="t a" onclick="sw('ot')" id="t-ot"><span class="tab-full">Old Testament</span><span class="tab-short">OT</span></button>
 <button class="t" onclick="sw('nt')" id="t-nt"><span class="tab-full">New Testament</span><span class="tab-short">NT</span></button>
@@ -309,10 +309,11 @@ body {
   user-select: none;
 }
 
-.toggle-label {
+.toggle-label, .theme-label {
   font-size: 0.75rem;
   color: var(--text-secondary);
   font-family: -apple-system, sans-serif;
+  display: none;
 }
 
 .toggle-track {
@@ -5239,10 +5240,8 @@ body {
   user-select: none;
 }
 
-.toggle-label {
-  font-size: 0.75rem;
-  color: var(--text-secondary);
-  font-family: -apple-system, sans-serif;
+.toggle-label, .theme-label {
+  display: none;
 }
 
 .toggle-track {
@@ -8497,7 +8496,7 @@ body{background:var(--bg-primary);color:var(--text-primary);font-family:Georgia,
 .header h1{font-size:clamp(1.6rem,4.5vw,2.8rem);font-weight:700;color:var(--gold);letter-spacing:0.03em;line-height:1.2}
 .header .subtitle{color:var(--text-secondary);font-style:italic;font-size:clamp(0.85rem,2vw,1.05rem);margin-top:0.3rem}
 .theme-toggle{position:fixed;top:1rem;right:1rem;z-index:100;display:flex;align-items:center;gap:0.5rem;cursor:pointer;user-select:none}
-.toggle-label{font-size:0.75rem;color:var(--text-secondary);font-family:-apple-system,sans-serif}
+.toggle-label,.theme-label{display:none}
 .toggle-track{width:48px;height:26px;background:var(--toggle-bg);border-radius:13px;position:relative;border:1px solid var(--border);transition:background 0.4s}
 .toggle-knob{width:22px;height:22px;background:var(--toggle-knob);border-radius:50%;position:absolute;top:1px;left:2px;transition:left 0.3s;display:flex;align-items:center;justify-content:center;font-size:11px}
 [data-theme=&quot;light&quot;] .toggle-knob{left:23px}
@@ -9186,7 +9185,7 @@ body{background:var(--bg);color:var(--text-primary);font-family:Georgia,&#x27;Ti
 .theme-toggle{position:fixed;top:1rem;right:1rem;z-index:100;display:flex;align-items:center;gap:.5rem;cursor:pointer;user-select:none}
 
 
-.theme-label{font-size:.75rem;color:var(--text-secondary);font-family:-apple-system,sans-serif}
+.theme-label{display:none}
 
 
 .toggle-track{width:48px;height:26px;background:var(--toggle-bg);border-radius:13px;position:relative;border:1px solid var(--border-hover);transition:all .3s}
@@ -9491,7 +9490,7 @@ body{background:var(--bg);color:var(--text-primary);font-family:Georgia,&#x27;Ti
 &lt;button class=&quot;nav-tab&quot; data-view=&quot;map&quot;&gt;Map&lt;/button&gt;
 &lt;/div&gt;
 &lt;div class=&quot;search-bar&quot;&gt;&lt;span class=&quot;search-icon&quot;&gt;&amp;#9906;&lt;/span&gt;&lt;input type=&quot;text&quot; id=&quot;globalSearch&quot; placeholder=&quot;Search symbols, terms, references...&quot; /&gt;&lt;/div&gt;
-&lt;div class=&quot;welcome-banner&quot; id=&quot;welcomeBanner&quot; style=&quot;display:none&quot;&gt;&lt;h2&gt;\u2726 Welcome to Revelation&lt;/h2&gt;&lt;p&gt;Start with By Chapter for a guided walk, or explore Symbols to decode the imagery.&lt;/p&gt;&lt;button class=&quot;welcome-dismiss&quot; onclick=&quot;dismissOnboarding()&quot;&gt;Got it, let\&#x27;s go \u2192&lt;/button&gt;&lt;/div&gt;
+&lt;div class=&quot;welcome-banner&quot; id=&quot;welcomeBanner&quot; style=&quot;display:none&quot;&gt;&lt;h2&gt;✦ Welcome to Revelation&lt;/h2&gt;&lt;p&gt;Start with By Chapter for a guided walk, or explore Symbols to decode the imagery.&lt;/p&gt;&lt;button class=&quot;welcome-dismiss&quot; onclick=&quot;dismissOnboarding()&quot;&gt;Got it, let&#x27;s go →&lt;/button&gt;&lt;/div&gt;
 &lt;div class=&quot;view-container a&quot; id=&quot;viewChapters&quot;&gt;&lt;div class=&quot;content-area&quot;&gt;&lt;div class=&quot;chapter-grid&quot; id=&quot;chapterGrid&quot;&gt;&lt;/div&gt;&lt;div id=&quot;chapterDetail&quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;div class=&quot;view-container&quot; id=&quot;viewSymbols&quot;&gt;&lt;div class=&quot;content-area&quot;&gt;&lt;div id=&quot;symbolFilters&quot; style=&quot;display:flex;flex-wrap:wrap;justify-content:center;gap:.3rem;margin-bottom:.8rem&quot;&gt;&lt;/div&gt;&lt;div id=&quot;symbolList&quot;&gt;&lt;/div&gt;&lt;div id=&quot;symbolDetail&quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;div class=&quot;view-container&quot; id=&quot;viewChurches&quot;&gt;&lt;div class=&quot;content-area&quot;&gt;&lt;div class=&quot;church-grid&quot; id=&quot;churchGrid&quot;&gt;&lt;/div&gt;&lt;div id=&quot;churchDetail&quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
@@ -9868,7 +9867,7 @@ body{background:var(--bg);color:var(--tp);font-family:Georgia,&#x27;Times New Ro
 .hdr h1{font-size:1.45rem;font-weight:600;color:var(--tp);letter-spacing:0.01em}
 .hdr h1 .star{color:var(--gold);margin-right:0.25rem}
 .tt{display:flex;align-items:center;gap:0.45rem;cursor:pointer;user-select:none;-webkit-tap-highlight-color:transparent}
-.tt-lbl{font-family:-apple-system,sans-serif;font-size:0.68rem;color:var(--tm);font-weight:500}
+.tt-lbl{display:none}
 .tt-track{width:34px;height:19px;border-radius:10px;background:var(--bg3);border:1px solid var(--bd);position:relative;transition:background 0.3s}
 .tt-knob{position:absolute;top:2px;left:2px;width:13px;height:13px;border-radius:50%;background:var(--gold);transition:left 0.3s;display:flex;align-items:center;justify-content:center;font-size:8px;line-height:1}
 [data-theme=&quot;dark&quot;] .tt-knob{left:17px}
@@ -10019,7 +10018,7 @@ body{background:var(--bg);color:var(--tp);font-family:Georgia,&#x27;Times New Ro
       &lt;button class=&quot;copy-btn&quot; id=&quot;cpBtn&quot; onclick=&quot;copyPrompt()&quot;&gt;&amp;#128203; Copy to clipboard&lt;/button&gt;
       &lt;span class=&quot;wc&quot; id=&quot;wc&quot;&gt;&lt;/span&gt;
     &lt;/div&gt;
-    &lt;div style=&quot;text-align:center;padding:0.3rem 0 0.1rem;font-family:-apple-system,sans-serif;font-size:0.66rem;color:var(--text-muted);opacity:0.7;width:100%&quot;&gt;Paste into &lt;a href=&quot;#&quot; onclick=&quot;event.preventDefault();parent.postMessage({openUrl:&#x27;https://chatgpt.com&#x27;},&#x27;*&#x27;)&quot; style=&quot;color:var(--gold);text-decoration:none;cursor:pointer;&quot;&gt;ChatGPT&lt;/a&gt; &amp;middot; &lt;a href=&quot;#&quot; onclick=&quot;event.preventDefault();parent.postMessage({openUrl:&#x27;https://claude.ai&#x27;},&#x27;*&#x27;)&quot; style=&quot;color:var(--gold);text-decoration:none;cursor:pointer;&quot;&gt;Claude&lt;/a&gt; &amp;middot; &lt;a href=&quot;#&quot; onclick=&quot;event.preventDefault();parent.postMessage({openUrl:&#x27;https://gemini.google.com&#x27;},&#x27;*&#x27;)&quot; style=&quot;color:var(--gold);text-decoration:none;cursor:pointer;&quot;&gt;Gemini&lt;/a&gt; &amp;middot; &lt;a href=&quot;#&quot; onclick=&quot;event.preventDefault();parent.postMessage({openUrl:&#x27;https://grok.com&#x27;},&#x27;*&#x27;)&quot; style=&quot;color:var(--gold);text-decoration:none;cursor:pointer;&quot;&gt;Grok&lt;/a&gt; &amp;middot; or any AI&lt;/div&gt;
+    &lt;div style=&quot;text-align:center;padding:0.3rem 0 0.1rem;font-family:-apple-system,sans-serif;font-size:0.66rem;color:var(--text-muted);opacity:0.7;width:100%&quot;&gt;Paste into &lt;a href=&quot;#&quot; onclick=&quot;event.preventDefault();copyAndOpen(&#x27;https://chatgpt.com&#x27;)&quot; style=&quot;color:var(--gold);text-decoration:none;cursor:pointer;&quot;&gt;ChatGPT&lt;/a&gt; &amp;middot; &lt;a href=&quot;#&quot; onclick=&quot;event.preventDefault();copyAndOpen(&#x27;https://claude.ai&#x27;)&quot; style=&quot;color:var(--gold);text-decoration:none;cursor:pointer;&quot;&gt;Claude&lt;/a&gt; &amp;middot; &lt;a href=&quot;#&quot; onclick=&quot;event.preventDefault();copyAndOpen(&#x27;https://gemini.google.com&#x27;)&quot; style=&quot;color:var(--gold);text-decoration:none;cursor:pointer;&quot;&gt;Gemini&lt;/a&gt; &amp;middot; &lt;a href=&quot;#&quot; onclick=&quot;event.preventDefault();copyAndOpen(&#x27;https://grok.com&#x27;)&quot; style=&quot;color:var(--gold);text-decoration:none;cursor:pointer;&quot;&gt;Grok&lt;/a&gt; &amp;middot; or any AI&lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 
@@ -10210,6 +10209,20 @@ function ok(btn){
   btn.classList.add(&#x27;done&#x27;);btn.innerHTML=&#x27;\u2713 Copied!&#x27;;
   setTimeout(function(){btn.classList.remove(&#x27;done&#x27;);btn.innerHTML=&#x27;\uD83D\uDCCB Copy to clipboard&#x27;;},2200);
 }
+function copyAndOpen(url){
+  var text=document.getElementById(&#x27;pTxt&#x27;).textContent;
+  var btn=document.getElementById(&#x27;cpBtn&#x27;);
+  var doCopy=navigator.clipboard&amp;&amp;navigator.clipboard.writeText;
+  if(doCopy){
+    navigator.clipboard.writeText(text).then(function(){
+      ok(btn);parent.postMessage({openUrl:url},&#x27;*&#x27;);
+    }).catch(function(){
+      fb(text,btn);parent.postMessage({openUrl:url},&#x27;*&#x27;);
+    });
+  }else{
+    fb(text,btn);parent.postMessage({openUrl:url},&#x27;*&#x27;);
+  }
+}
 
 /* ═══ BOOK INFO CARD ═══ */
 function renderBookInfo(name){
@@ -10273,7 +10286,7 @@ function setMode(id){
 
 <div class="disclaimer">
 <em>A study aid, not a substitute for Scripture.</em> &#8201; Reading notes and summaries reflect particular perspectives and may contain errors. Locations, dates, and authorship often involve scholarly debate. Always read the biblical text yourself and form your own understanding &#8212; that&#8217;s where the real discovery happens.
-<span class="ver">v1.0 &#8201;&#183;&#8201; February 16, 2025</span>
+<span class="ver">v1.1 &#8201;&#183;&#8201; February 22, 2026</span>
 </div>
 <script>
 // Handle URL open requests from sandboxed iframes
