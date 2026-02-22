@@ -18,8 +18,12 @@ body{background:var(--bg);font-family:Georgia,serif;overflow:hidden;height:100vh
 .tb{display:flex;align-items:center;background:var(--tab);border-bottom:1px solid var(--bd);flex-shrink:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,0.3)}
 .tt{padding:12px 16px;color:var(--gold);font-size:14px;font-weight:600;letter-spacing:2px;text-transform:uppercase;white-space:nowrap;border-right:1px solid var(--bd);user-select:none}
 .tt .c{color:var(--gb);margin-right:5px;font-size:16px}
-.ts{display:flex;flex:1;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.brand-short{display:none}
+@media(max-width:600px){.brand-full{display:none}.brand-short{display:inline}}
+.ts{display:flex;flex:1;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;position:relative}
 .ts::-webkit-scrollbar{display:none}
+.ts-fade{position:absolute;right:0;top:0;bottom:0;width:40px;background:linear-gradient(to right,transparent,var(--tab));pointer-events:none;z-index:10;transition:opacity 0.3s}
+.ts-fade.hidden{opacity:0}
 .t{position:relative;padding:13px 20px;color:var(--tm);font-family:Georgia,serif;font-size:14px;font-weight:500;cursor:pointer;border:none;background:0 0;transition:color .3s,background .3s;user-select:none;white-space:nowrap;flex-shrink:0}
 .t:hover{color:#e8dcc8;background:rgba(201,168,76,.05)}
 .t.a{color:var(--gb);background:rgba(201,168,76,.08)}
@@ -33,7 +37,7 @@ body{background:var(--bg);font-family:Georgia,serif;overflow:hidden;height:100vh
 .disclaimer{background:var(--tab);border-top:1px solid var(--bd);padding:8px 20px;font-size:11.5px;color:var(--tm);font-family:-apple-system,BlinkMacSystemFont,sans-serif;text-align:center;flex-shrink:0;line-height:1.5;letter-spacing:0.01em}
 .disclaimer em{font-style:italic;color:#a89a82}
 .disclaimer .ver{opacity:0.5;margin-left:0.8em;font-size:10px;letter-spacing:0.03em}
-@media(max-width:600px){.tt{padding:10px 10px;font-size:11px;letter-spacing:1px}.t{padding:11px 12px;font-size:12px}.disclaimer{padding:7px 12px;font-size:10px}.print-btn{padding:8px 10px;font-size:11px}}
+@media(max-width:600px){.tb{flex-wrap:wrap}.tt{padding:8px 10px;font-size:11px;letter-spacing:1px;border-right:none;border-bottom:1px solid var(--bd)}.t{padding:9px 0;font-size:11.5px;flex:1;text-align:center}.ts{order:3;width:100%;flex:none;overflow-x:visible;border-top:none}.ts-fade{display:none}.print-btn{padding:6px 10px;font-size:11px;border-left:none;border-bottom:1px solid var(--bd)}.disclaimer{padding:7px 12px;font-size:10px}}
 
 /* ═══ MOBILE NAV SCROLL-SNAP ═══ */
 @media (max-width:500px) {
@@ -50,13 +54,14 @@ body{background:var(--bg);font-family:Georgia,serif;overflow:hidden;height:100vh
 </head>
 <body>
 <div class="tb">
-<div class="tt"><span class="c">&#10022;</span>Berean Bible Companion</div>
-<div class="ts">
+<div class="tt"><span class="c">&#10022;</span><span class="brand-full">Berean Bible Companion</span><span class="brand-short">Berean</span></div>
+<div class="ts" id="tabStrip">
 <button class="t a" onclick="sw('ot')" id="t-ot">Old Testament</button>
 <button class="t" onclick="sw('nt')" id="t-nt">New Testament</button>
 <button class="t" onclick="sw('lc')" id="t-lc">Life &amp; Customs</button>
 <button class="t" onclick="sw('rv')" id="t-rv">Revelation</button>
 <button class="t" onclick="sw('ai')" id="t-ai">AI Prompts</button>
+<div class="ts-fade" id="tsFade"></div>
 </div>
 <button class="print-btn" onclick="printView()" title="Print current view">&#9113; Print</button>
 </div>
@@ -1649,6 +1654,32 @@ body {
   transition: all 0.2s;
 }
 
+/* Map tap hint */
+.map-tap-hint {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(26,22,18,0.88);
+  color: #c9a84c;
+  font-family: -apple-system, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid rgba(201,168,76,0.25);
+  pointer-events: none;
+  z-index: 5;
+  white-space: nowrap;
+  animation: hintPulse 2.5s ease-in-out infinite;
+  transition: opacity 0.4s;
+}
+.map-tap-hint.dismissed { opacity: 0; animation: none; }
+@keyframes hintPulse {
+  0%, 100% { opacity: 0.85; }
+  50% { opacity: 1; border-color: rgba(201,168,76,0.5); }
+}
+
 /* Map theme colors — dark */
 :root[data-theme=&quot;dark&quot;] {
   --map-bg: #1e1a16;
@@ -1892,10 +1923,11 @@ body {
 &lt;/div&gt;
 
 &lt;div class=&quot;view-container&quot; id=&quot;viewMap&quot;&gt;
-  &lt;div class=&quot;gloss-intro&quot;&gt;Key locations of the Old Testament. Click any site for details and the events that happened there.&lt;/div&gt;
+  &lt;div class=&quot;gloss-intro&quot;&gt;Key locations of the Old Testament. Tap any dot on the map to explore its history and biblical events.&lt;/div&gt;
   &lt;div class=&quot;gloss-cat-filters&quot; id=&quot;mapRegionFilters&quot;&gt;&lt;/div&gt;
   &lt;div class=&quot;map-outer&quot; id=&quot;mapOuter&quot;&gt;
     &lt;div class=&quot;map-container&quot; id=&quot;mapContainer&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;map-tap-hint&quot; id=&quot;mapTapHint&quot;&gt;Tap a dot to explore each site&lt;/div&gt;
   &lt;/div&gt;
   &lt;div class=&quot;map-legend&quot;&gt;
     &lt;div class=&quot;map-legend-item&quot;&gt;&lt;div class=&quot;map-legend-dot&quot; style=&quot;background:var(--cat-king)&quot;&gt;&lt;/div&gt; Israel / Canaan&lt;/div&gt;
@@ -4982,13 +5014,15 @@ function renderMap() {
       detailPanel.innerHTML = html;
     }
   } else {
-    detailPanel.innerHTML = &#x27;&lt;p style=&quot;text-align:center;color:var(--text-muted);padding:1rem;font-size:0.85rem;font-style:italic;&quot;&gt;Click any dot to explore \u2022 Distance rings radiate from Jerusalem&lt;/p&gt;&#x27;;
+    detailPanel.innerHTML = &#x27;&lt;p style=&quot;text-align:center;color:var(--text-muted);padding:1rem;font-size:0.85rem;font-style:italic;&quot;&gt;Tap any dot to explore \u2022 Distance rings radiate from Jerusalem&lt;/p&gt;&#x27;;
   }
 }
 
 function selectMapSite(siteId) {
   activeMapSite = (activeMapSite === siteId) ? null : siteId;
   renderMap();
+  var hint = document.getElementById('mapTapHint');
+  if (hint) hint.classList.add('dismissed');
   if (activeMapSite) {
     setTimeout(function() {
       var panel = document.getElementById(&#x27;mapDetailPanel&#x27;);
@@ -6459,6 +6493,32 @@ body {
   transition: all 0.2s;
 }
 
+/* Map tap hint */
+.map-tap-hint {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(26,22,18,0.88);
+  color: #c9a84c;
+  font-family: -apple-system, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid rgba(201,168,76,0.25);
+  pointer-events: none;
+  z-index: 5;
+  white-space: nowrap;
+  animation: hintPulse 2.5s ease-in-out infinite;
+  transition: opacity 0.4s;
+}
+.map-tap-hint.dismissed { opacity: 0; animation: none; }
+@keyframes hintPulse {
+  0%, 100% { opacity: 0.85; }
+  50% { opacity: 1; border-color: rgba(201,168,76,0.5); }
+}
+
 /* Map theme — minimal white canvas with dots */
 :root[data-theme=&quot;dark&quot;] {
   --map-bg: #1e1a16;
@@ -6764,10 +6824,11 @@ body {
 
 &lt;!-- MAP VIEW --&gt;
 &lt;div class=&quot;view-container&quot; id=&quot;viewMap&quot;&gt;
-  &lt;div class=&quot;gloss-intro&quot;&gt;Key locations of the New Testament world. Click any site for details and the events that happened there.&lt;/div&gt;
+  &lt;div class=&quot;gloss-intro&quot;&gt;Key locations of the New Testament world. Tap any dot on the map to explore its history and biblical events.&lt;/div&gt;
   &lt;div class=&quot;gloss-cat-filters&quot; id=&quot;mapRegionFilters&quot;&gt;&lt;/div&gt;
   &lt;div class=&quot;map-outer&quot; id=&quot;mapOuter&quot;&gt;
     &lt;div class=&quot;map-container&quot; id=&quot;mapContainer&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;map-tap-hint&quot; id=&quot;mapTapHint&quot;&gt;Tap a dot to explore each site&lt;/div&gt;
   &lt;/div&gt;
   &lt;div class=&quot;map-detail-panel&quot; id=&quot;mapDetailPanel&quot;&gt;&lt;/div&gt;
 &lt;/div&gt;
@@ -8379,12 +8440,12 @@ function renderMap() {
       detailPanel.innerHTML = html;
     }
   } else {
-    detailPanel.innerHTML = &#x27;&lt;p style=&quot;text-align:center;color:var(--text-muted);padding:1rem;font-size:0.85rem;font-style:italic;&quot;&gt;Click any dot to explore \u2022 Distance rings radiate from Jerusalem&lt;/p&gt;&#x27;;
+    detailPanel.innerHTML = &#x27;&lt;p style=&quot;text-align:center;color:var(--text-muted);padding:1rem;font-size:0.85rem;font-style:italic;&quot;&gt;Tap any dot to explore \u2022 Distance rings radiate from Jerusalem&lt;/p&gt;&#x27;;
   }
 }
 
 function setMapRegion(r) { mapRegion = r; activeMapSite = null; renderMap(); }
-function selectMapSite(siteId) { activeMapSite = (activeMapSite === siteId) ? null : siteId; renderMap(); }
+function selectMapSite(siteId) { activeMapSite = (activeMapSite === siteId) ? null : siteId; renderMap(); var h=document.getElementById('mapTapHint'); if(h) h.classList.add('dismissed'); }
 
 // ═══════════════════════════════════════════════════
 //  VIEW ROUTER
@@ -9956,6 +10017,7 @@ body{background:var(--bg);color:var(--tp);font-family:Georgia,&#x27;Times New Ro
     &lt;button class=&quot;copy-btn&quot; id=&quot;cpBtn&quot; onclick=&quot;copyPrompt()&quot;&gt;&amp;#128203; Copy to clipboard&lt;/button&gt;
     &lt;span class=&quot;wc&quot; id=&quot;wc&quot;&gt;&lt;/span&gt;
   &lt;/div&gt;
+  &lt;div style=&quot;text-align:center;padding:0.35rem 0.5rem;font-family:-apple-system,sans-serif;font-size:0.66rem;color:var(--text-muted);opacity:0.7;&quot;&gt;Paste into &lt;a href=&quot;#&quot; onclick=&quot;event.preventDefault();parent.postMessage({openUrl:&#x27;https://chatgpt.com&#x27;},&#x27;*&#x27;)&quot; style=&quot;color:var(--gold);text-decoration:none;cursor:pointer;&quot;&gt;ChatGPT&lt;/a&gt; &amp;middot; &lt;a href=&quot;#&quot; onclick=&quot;event.preventDefault();parent.postMessage({openUrl:&#x27;https://claude.ai&#x27;},&#x27;*&#x27;)&quot; style=&quot;color:var(--gold);text-decoration:none;cursor:pointer;&quot;&gt;Claude&lt;/a&gt; &amp;middot; &lt;a href=&quot;#&quot; onclick=&quot;event.preventDefault();parent.postMessage({openUrl:&#x27;https://gemini.google.com&#x27;},&#x27;*&#x27;)&quot; style=&quot;color:var(--gold);text-decoration:none;cursor:pointer;&quot;&gt;Gemini&lt;/a&gt; &amp;middot; &lt;a href=&quot;#&quot; onclick=&quot;event.preventDefault();parent.postMessage({openUrl:&#x27;https://grok.com&#x27;},&#x27;*&#x27;)&quot; style=&quot;color:var(--gold);text-decoration:none;cursor:pointer;&quot;&gt;Grok&lt;/a&gt; &amp;middot; or any AI&lt;/div&gt;
 &lt;/div&gt;
 
 &lt;div class=&quot;tip&quot;&gt;
@@ -10211,6 +10273,15 @@ function setMode(id){
 <span class="ver">v1.0 &#8201;&#183;&#8201; February 16, 2025</span>
 </div>
 <script>
+// Handle URL open requests from sandboxed iframes
+window.addEventListener('message', function(e) {
+  if (e.data && e.data.openUrl && typeof e.data.openUrl === 'string') {
+    var allowed = ['https://chatgpt.com','https://claude.ai','https://gemini.google.com','https://grok.com'];
+    if (allowed.indexOf(e.data.openUrl) !== -1) {
+      window.open(e.data.openUrl, '_blank', 'noopener');
+    }
+  }
+});
 var tabs=['ot','nt','lc','rv','ai'];
 var activeTab='ot';
 function sw(w){
@@ -10219,7 +10290,26 @@ function sw(w){
     document.getElementById('t-'+t).classList.toggle('a',t===w);
     document.getElementById('f-'+t).className=t===w?'v':'h';
   });
+  // Scroll the active tab into view
+  var btn=document.getElementById('t-'+w);
+  if(btn)btn.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
+  updateFade();
 }
+// Tab strip scroll fade
+function updateFade(){
+  var s=document.getElementById('tabStrip');
+  var f=document.getElementById('tsFade');
+  if(!s||!f)return;
+  var atEnd=s.scrollLeft+s.clientWidth>=s.scrollWidth-5;
+  f.classList.toggle('hidden',atEnd);
+}
+(function(){
+  var s=document.getElementById('tabStrip');
+  if(s){
+    s.addEventListener('scroll',updateFade);
+    updateFade();
+  }
+})();
 function printView(){
   try{
     var frame=document.getElementById('f-'+activeTab);
