@@ -1,5 +1,4 @@
-[README.md](https://github.com/user-attachments/files/25470501/README.md)
-# ✦ Bible Companion
+# ✦ Berean Bible Companion
 
 A comprehensive, offline-first Bible study reference — all 66 books, five interactive tabs, zero dependencies, one file.
 
