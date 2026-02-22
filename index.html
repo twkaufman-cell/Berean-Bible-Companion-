@@ -19,7 +19,8 @@ body{background:var(--bg);font-family:Georgia,serif;overflow:hidden;height:100vh
 .tt{padding:12px 16px;color:var(--gold);font-size:14px;font-weight:600;letter-spacing:2px;text-transform:uppercase;white-space:nowrap;border-right:1px solid var(--bd);user-select:none}
 .tt .c{color:var(--gb);margin-right:5px;font-size:16px}
 .brand-short{display:none}
-@media(max-width:600px){.brand-full{display:none}.brand-short{display:inline}}
+.tab-short{display:none}
+@media(max-width:600px){.brand-full{display:none}.brand-short{display:inline}.tab-full{display:none}.tab-short{display:inline}}
 .ts{display:flex;flex:1;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;position:relative}
 .ts::-webkit-scrollbar{display:none}
 .ts-fade{position:absolute;right:0;top:0;bottom:0;width:40px;background:linear-gradient(to right,transparent,var(--tab));pointer-events:none;z-index:10;transition:opacity 0.3s}
@@ -56,11 +57,11 @@ body{background:var(--bg);font-family:Georgia,serif;overflow:hidden;height:100vh
 <div class="tb">
 <div class="tt"><span class="c">&#10022;</span><span class="brand-full">Berean Bible Companion</span><span class="brand-short">Berean</span></div>
 <div class="ts" id="tabStrip">
-<button class="t a" onclick="sw('ot')" id="t-ot">Old Testament</button>
-<button class="t" onclick="sw('nt')" id="t-nt">New Testament</button>
-<button class="t" onclick="sw('lc')" id="t-lc">Life &amp; Customs</button>
-<button class="t" onclick="sw('rv')" id="t-rv">Revelation</button>
-<button class="t" onclick="sw('ai')" id="t-ai">AI Prompts</button>
+<button class="t a" onclick="sw('ot')" id="t-ot"><span class="tab-full">Old Testament</span><span class="tab-short">OT</span></button>
+<button class="t" onclick="sw('nt')" id="t-nt"><span class="tab-full">New Testament</span><span class="tab-short">NT</span></button>
+<button class="t" onclick="sw('lc')" id="t-lc"><span class="tab-full">Life &amp; Customs</span><span class="tab-short">Life</span></button>
+<button class="t" onclick="sw('rv')" id="t-rv"><span class="tab-full">Revelation</span><span class="tab-short">Rev</span></button>
+<button class="t" onclick="sw('ai')" id="t-ai"><span class="tab-full">AI Prompts</span><span class="tab-short">AI</span></button>
 <div class="ts-fade" id="tsFade"></div>
 </div>
 <button class="print-btn" onclick="printView()" title="Print current view">&#9113; Print</button>
@@ -9922,7 +9923,7 @@ body{background:var(--bg);color:var(--tp);font-family:Georgia,&#x27;Times New Ro
 .prompt-txt .p-task{color:var(--tp)}
 
 /* ═══ COPY BAR ═══ */
-.copy-bar{display:flex;align-items:center;justify-content:space-between;padding:0.55rem 1rem;border-top:1px solid var(--prompt-bd);background:var(--prompt-bg)}
+.copy-bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;padding:0.55rem 1rem;border-top:1px solid var(--prompt-bd);background:var(--prompt-bg)}
 .copy-btn{display:inline-flex;align-items:center;gap:0.4em;font-family:-apple-system,sans-serif;font-size:0.78rem;font-weight:600;padding:0.48rem 1.15rem;border-radius:2rem;border:none;background:var(--copy-bg);color:var(--copy-text);cursor:pointer;transition:all 0.2s;-webkit-tap-highlight-color:transparent}
 .copy-btn:hover{background:var(--copy-hover);transform:translateY(-1px)}
 .copy-btn:active{transform:scale(0.97)}
@@ -9964,7 +9965,7 @@ body{background:var(--bg);color:var(--tp);font-family:Georgia,&#x27;Times New Ro
   .ctl-row{flex-direction:row}
   .tip{margin-top:0.5rem;padding:0.45rem 0.7rem}
   /* Floating copy bar on mobile */
-  .copy-bar{position:fixed;bottom:0;left:0;right:0;z-index:50;background:var(--prompt-bg);border-top:1px solid var(--bd);box-shadow:0 -2px 8px var(--sh);padding:0.55rem 1rem}
+  .copy-bar{position:fixed;bottom:0;left:0;right:0;z-index:50;background:var(--prompt-bg);border-top:1px solid var(--bd);box-shadow:0 -2px 8px var(--sh);padding:0.45rem 0.8rem;flex-wrap:wrap}
 }
 @media(prefers-reduced-motion:reduce){.welcome,.prompt-card,.chip{animation:none;transition:none}}
 &lt;/style&gt;
@@ -10014,10 +10015,12 @@ body{background:var(--bg);color:var(--tp);font-family:Georgia,&#x27;Times New Ro
     &lt;div class=&quot;prompt-txt&quot; id=&quot;pTxt&quot;&gt;&lt;/div&gt;
   &lt;/div&gt;
   &lt;div class=&quot;copy-bar&quot;&gt;
-    &lt;button class=&quot;copy-btn&quot; id=&quot;cpBtn&quot; onclick=&quot;copyPrompt()&quot;&gt;&amp;#128203; Copy to clipboard&lt;/button&gt;
-    &lt;span class=&quot;wc&quot; id=&quot;wc&quot;&gt;&lt;/span&gt;
+    &lt;div style=&quot;display:flex;align-items:center;justify-content:space-between;width:100%&quot;&gt;
+      &lt;button class=&quot;copy-btn&quot; id=&quot;cpBtn&quot; onclick=&quot;copyPrompt()&quot;&gt;&amp;#128203; Copy to clipboard&lt;/button&gt;
+      &lt;span class=&quot;wc&quot; id=&quot;wc&quot;&gt;&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div style=&quot;text-align:center;padding:0.3rem 0 0.1rem;font-family:-apple-system,sans-serif;font-size:0.66rem;color:var(--text-muted);opacity:0.7;width:100%&quot;&gt;Paste into &lt;a href=&quot;#&quot; onclick=&quot;event.preventDefault();parent.postMessage({openUrl:&#x27;https://chatgpt.com&#x27;},&#x27;*&#x27;)&quot; style=&quot;color:var(--gold);text-decoration:none;cursor:pointer;&quot;&gt;ChatGPT&lt;/a&gt; &amp;middot; &lt;a href=&quot;#&quot; onclick=&quot;event.preventDefault();parent.postMessage({openUrl:&#x27;https://claude.ai&#x27;},&#x27;*&#x27;)&quot; style=&quot;color:var(--gold);text-decoration:none;cursor:pointer;&quot;&gt;Claude&lt;/a&gt; &amp;middot; &lt;a href=&quot;#&quot; onclick=&quot;event.preventDefault();parent.postMessage({openUrl:&#x27;https://gemini.google.com&#x27;},&#x27;*&#x27;)&quot; style=&quot;color:var(--gold);text-decoration:none;cursor:pointer;&quot;&gt;Gemini&lt;/a&gt; &amp;middot; &lt;a href=&quot;#&quot; onclick=&quot;event.preventDefault();parent.postMessage({openUrl:&#x27;https://grok.com&#x27;},&#x27;*&#x27;)&quot; style=&quot;color:var(--gold);text-decoration:none;cursor:pointer;&quot;&gt;Grok&lt;/a&gt; &amp;middot; or any AI&lt;/div&gt;
   &lt;/div&gt;
-  &lt;div style=&quot;text-align:center;padding:0.35rem 0.5rem;font-family:-apple-system,sans-serif;font-size:0.66rem;color:var(--text-muted);opacity:0.7;&quot;&gt;Paste into &lt;a href=&quot;#&quot; onclick=&quot;event.preventDefault();parent.postMessage({openUrl:&#x27;https://chatgpt.com&#x27;},&#x27;*&#x27;)&quot; style=&quot;color:var(--gold);text-decoration:none;cursor:pointer;&quot;&gt;ChatGPT&lt;/a&gt; &amp;middot; &lt;a href=&quot;#&quot; onclick=&quot;event.preventDefault();parent.postMessage({openUrl:&#x27;https://claude.ai&#x27;},&#x27;*&#x27;)&quot; style=&quot;color:var(--gold);text-decoration:none;cursor:pointer;&quot;&gt;Claude&lt;/a&gt; &amp;middot; &lt;a href=&quot;#&quot; onclick=&quot;event.preventDefault();parent.postMessage({openUrl:&#x27;https://gemini.google.com&#x27;},&#x27;*&#x27;)&quot; style=&quot;color:var(--gold);text-decoration:none;cursor:pointer;&quot;&gt;Gemini&lt;/a&gt; &amp;middot; &lt;a href=&quot;#&quot; onclick=&quot;event.preventDefault();parent.postMessage({openUrl:&#x27;https://grok.com&#x27;},&#x27;*&#x27;)&quot; style=&quot;color:var(--gold);text-decoration:none;cursor:pointer;&quot;&gt;Grok&lt;/a&gt; &amp;middot; or any AI&lt;/div&gt;
 &lt;/div&gt;
 
 &lt;div class=&quot;tip&quot;&gt;
