@@ -25,10 +25,10 @@ body{background:var(--bg);font-family:Georgia,serif;overflow:hidden;height:100vh
 .ts::-webkit-scrollbar{display:none}
 .ts-fade{position:absolute;right:0;top:0;bottom:0;width:40px;background:linear-gradient(to right,transparent,var(--tab));pointer-events:none;z-index:10;transition:opacity 0.3s}
 .ts-fade.hidden{opacity:0}
-.t{position:relative;padding:13px 20px;color:var(--tm);font-family:Georgia,serif;font-size:14px;font-weight:500;cursor:pointer;border:none;background:0 0;transition:color .3s,background .3s;user-select:none;white-space:nowrap;flex-shrink:0}
-.t:hover{color:#e8dcc8;background:rgba(201,168,76,.05)}
-.t.a{color:var(--gb);background:rgba(201,168,76,.08)}
-.t.a::after{content:'';position:absolute;bottom:0;left:12px;right:12px;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.t{position:relative;padding:13px 20px;color:#d4c4a0;font-family:-apple-system,BlinkMacSystemFont,sans-serif;font-size:13px;font-weight:500;cursor:pointer;border:none;background:0 0;transition:all .25s;user-select:none;white-space:nowrap;flex-shrink:0;letter-spacing:0.02em}
+.t:hover{color:#fff;background:rgba(201,168,76,.12)}
+.t.a{color:#ffe27a;background:rgba(201,168,76,.15);font-weight:700}
+.t.a::after{content:'';position:absolute;bottom:0;left:6px;right:6px;height:3px;background:var(--gold);border-radius:2px 2px 0 0}
 .print-btn{padding:10px 16px;color:var(--tm);font-family:-apple-system,sans-serif;font-size:12px;cursor:pointer;border:none;background:0 0;transition:color .3s,background .3s;user-select:none;white-space:nowrap;flex-shrink:0;display:flex;align-items:center;gap:5px;margin-left:auto;border-left:1px solid var(--bd)}
 .print-btn:hover{color:var(--gb);background:rgba(201,168,76,.05)}
 .f{flex:1;position:relative;overflow:hidden}
@@ -38,7 +38,7 @@ body{background:var(--bg);font-family:Georgia,serif;overflow:hidden;height:100vh
 .disclaimer{background:var(--tab);border-top:1px solid var(--bd);padding:8px 20px;font-size:11.5px;color:var(--tm);font-family:-apple-system,BlinkMacSystemFont,sans-serif;text-align:center;flex-shrink:0;line-height:1.5;letter-spacing:0.01em}
 .disclaimer em{font-style:italic;color:#a89a82}
 .disclaimer .ver{opacity:0.5;margin-left:0.8em;font-size:10px;letter-spacing:0.03em}
-@media(max-width:600px){.tb{flex-wrap:wrap}.tt{padding:8px 10px;font-size:11px;letter-spacing:1px;border-right:none;border-bottom:1px solid var(--bd)}.t{padding:9px 0;font-size:11.5px;flex:1;text-align:center}.ts{order:3;width:100%;flex:none;overflow-x:visible;border-top:none}.ts-fade{display:none}.print-btn{padding:6px 10px;font-size:11px;border-left:none;border-bottom:1px solid var(--bd)}.disclaimer{padding:7px 12px;font-size:10px}}
+@media(max-width:600px){.tb{flex-wrap:wrap}.tt{padding:8px 10px;font-size:11px;letter-spacing:1px;border-right:none;border-bottom:1px solid var(--bd)}.ts{order:3;width:100%;flex:none;overflow-x:visible;border-top:none;background:rgba(30,25,20,0.95)}.ts-fade{display:none}.t{padding:11px 0;font-size:12.5px;flex:1;text-align:center;color:#d8cba4;font-weight:600;min-height:44px;display:flex;align-items:center;justify-content:center;border-bottom:2.5px solid transparent;transition:all .2s;border-right:1px solid rgba(201,168,76,0.1)}.t:last-of-type{border-right:none}.t.a{color:#ffe27a;font-weight:700;border-bottom-color:var(--gold);background:rgba(201,168,76,.12)}.print-btn{padding:6px 10px;font-size:11px;border-left:none;border-bottom:1px solid var(--bd)}.disclaimer{padding:7px 12px;font-size:10px}}
 
 /* ═══ MOBILE NAV SCROLL-SNAP ═══ */
 @media (max-width:500px) {
@@ -62,6 +62,7 @@ body{background:var(--bg);font-family:Georgia,serif;overflow:hidden;height:100vh
 <button class="t" onclick="sw('lc')" id="t-lc"><span class="tab-full">Life &amp; Customs</span><span class="tab-short">Life</span></button>
 <button class="t" onclick="sw('rv')" id="t-rv"><span class="tab-full">Revelation</span><span class="tab-short">Rev</span></button>
 <button class="t" onclick="sw('ai')" id="t-ai"><span class="tab-full">AI Prompts</span><span class="tab-short">AI</span></button>
+<button class="t" onclick="sw('pr')" id="t-pr"><span class="tab-full">Prayer</span><span class="tab-short">Pray</span></button>
 <div class="ts-fade" id="tsFade"></div>
 </div>
 <button class="print-btn" onclick="printView()" title="Print current view">&#9113; Print</button>
@@ -73,7 +74,7 @@ body{background:var(--bg);font-family:Georgia,serif;overflow:hidden;height:100vh
 
 <div style="text-align:center;margin-bottom:1rem">
 <div style="color:#c9a84c;font-size:1.4rem;font-weight:600;margin-bottom:0.3rem">&#10022; Berean Bible Companion</div>
-<div style="font-family:-apple-system,sans-serif;font-size:0.78rem;color:#6e6050;line-height:1.5;max-width:340px;margin:0 auto">Read-only preview. For interactive features, search, and all five tabs, open this file in a browser.<br>On iPhone: upload to <strong style="color:#b8a88a">netlify.com/drop</strong> (free), then open the link in Safari.</div>
+<div style="font-family:-apple-system,sans-serif;font-size:0.78rem;color:#6e6050;line-height:1.5;max-width:340px;margin:0 auto">Read-only preview. For interactive features, search, and all six tabs, open this file in a browser.<br>On iPhone: upload to <strong style="color:#b8a88a">netlify.com/drop</strong> (free), then open the link in Safari.</div>
 </div>
 
 <div style="border-top:1px solid rgba(201,168,76,0.2);margin:0.8rem 0"></div>
@@ -135,7 +136,7 @@ body{background:var(--bg);font-family:Georgia,serif;overflow:hidden;height:100vh
 <div style="border-top:1px solid rgba(201,168,76,0.2);margin:0.8rem 0"></div>
 
 <div style="text-align:center;font-family:-apple-system,sans-serif;font-size:0.72rem;color:#6e6050;line-height:1.6;padding-bottom:1rem">
-<em style="color:#a89a82">This file contains five interactive tabs:</em> Old Testament, New Testament, Life &amp; Customs, Revelation Study, and AI Prompts.<br>
+<em style="color:#a89a82">This file contains six interactive tabs:</em> Old Testament, New Testament, Life &amp; Customs, Revelation Study, AI Prompts, and Prayer Companion.<br>
 Each tab features detailed reading notes, cross-references, and scholarly context for every book of the Bible.<br>
 To access the full experience, open in any desktop browser or host at a free URL for iPhone use.
 </div>
@@ -4905,7 +4906,7 @@ function renderMap() {
   var majorSites = new Set([&#x27;jerusalem&#x27;,&#x27;beersheba&#x27;,&#x27;dan&#x27;,&#x27;damascus&#x27;,&#x27;sinai&#x27;,&#x27;goshen&#x27;,&#x27;redsea&#x27;,&#x27;kadesh&#x27;,&#x27;ur&#x27;,&#x27;haran&#x27;,&#x27;babylon&#x27;,&#x27;nineveh&#x27;,&#x27;susa&#x27;,&#x27;persepolis&#x27;,&#x27;tyre&#x27;,&#x27;carmel&#x27;,&#x27;samaria&#x27;,&#x27;hebron&#x27;,&#x27;megiddo&#x27;,&#x27;shechem&#x27;]);
 
   // Pre-computed Haversine distances from Jerusalem
-  var distMap = {bethlehem:4,hebron:18,shechem:31,bethel:11,jericho:15,dan:105,beersheba:44,shiloh:20,samaria:35,carmel:68,megiddo:56,gilgal:14,sinai:235,goshen:205,redsea:202,kadesh:94,ur:645,haran:414,babylon:541,nineveh:554,susa:764,persepolis:1055,damascus:136,tyre:104,jordan:20,moab:37};
+  var distMap = {bethlehem:&quot;4 S&quot;,hebron:&quot;18 S&quot;,shechem:&quot;31 N&quot;,bethel:&quot;11 N&quot;,jericho:&quot;15 E&quot;,dan:&quot;105 N&quot;,beersheba:&quot;44 SW&quot;,shiloh:&quot;20 N&quot;,samaria:&quot;35 N&quot;,carmel:&quot;68 NW&quot;,megiddo:&quot;56 N&quot;,gilgal:&quot;14 E&quot;,sinai:&quot;235 S&quot;,goshen:&quot;205 SW&quot;,redsea:&quot;202 S&quot;,kadesh:&quot;94 SW&quot;,ur:&quot;645 E&quot;,haran:&quot;414 NE&quot;,babylon:&quot;541 E&quot;,nineveh:&quot;554 NE&quot;,susa:&quot;764 E&quot;,persepolis:&quot;1055 E&quot;,damascus:&quot;136 NE&quot;,tyre:&quot;104 NW&quot;,jordan:&quot;20 E&quot;,moab:&quot;37 SE&quot;};
 
   MAP_SITES.forEach(function(site) {
     var isActive = activeMapSite === site.id;
@@ -4991,7 +4992,7 @@ function renderMap() {
       var distText = &#x27;&#x27;;
       if (site.id !== &#x27;jerusalem&#x27;) {
         var mi = distMap[site.id];
-        if (mi) distText = &#x27; \u2022 ~&#x27; + mi + &#x27; mi from Jerusalem&#x27;;
+        if (mi) { var parts = mi.split(&#x27; &#x27;); distText = &#x27; \u2022 ~&#x27; + parts[0] + &#x27; mi &#x27; + parts[1] + &#x27; of Jerusalem&#x27;; }
       }
       var html = &#x27;&lt;div class=&quot;map-detail-card&quot;&gt;&#x27; +
         &#x27;&lt;div class=&quot;map-detail-name&quot;&gt;&#x27; + escHtml(site.name) + &#x27;&lt;/div&gt;&#x27; +
@@ -8413,9 +8414,9 @@ function renderMap() {
       var distText = &#x27;&#x27;;
       if (site.id !== &#x27;jerusalem&#x27;) {
         // Accurate distances pre-computed from Haversine formula
-        var distMap = {bethlehem:5,nazareth:64,capernaum:81,galilee:78,bethany:2,jordan:20,caesarea:57,samaria:30,joppa:34,antioch_syria:300,tarsus:375,ephesus:660,colossae:570,derbe:430,lystra:450,troas:720,laodicea:560,philippi:810,thessalonica:760,athens:640,corinth:660,crete:520,patmos:600,rome:1434,malta:1400,cyprus:260};
+        var distMap = {bethlehem:&quot;5 S&quot;,nazareth:&quot;64 N&quot;,capernaum:&quot;81 N&quot;,galilee:&quot;78 N&quot;,bethany:&quot;2 E&quot;,jordan:&quot;20 E&quot;,caesarea:&quot;57 NW&quot;,samaria:&quot;30 N&quot;,joppa:&quot;34 W&quot;,antioch_syria:&quot;300 N&quot;,tarsus:&quot;375 NW&quot;,ephesus:&quot;660 NW&quot;,colossae:&quot;570 NW&quot;,derbe:&quot;430 NW&quot;,lystra:&quot;450 NW&quot;,troas:&quot;720 NW&quot;,laodicea:&quot;560 NW&quot;,philippi:&quot;810 NW&quot;,thessalonica:&quot;760 NW&quot;,athens:&quot;640 W&quot;,corinth:&quot;660 W&quot;,crete:&quot;520 W&quot;,patmos:&quot;600 NW&quot;,rome:&quot;1434 NW&quot;,malta:&quot;1400 W&quot;,cyprus:&quot;260 NW&quot;};
         var mi = distMap[site.id];
-        if (mi) distText = &#x27; \u2022 ~&#x27; + mi + &#x27; mi from Jerusalem&#x27;;
+        if (mi) { var parts = mi.split(&#x27; &#x27;); distText = &#x27; \u2022 ~&#x27; + parts[0] + &#x27; mi &#x27; + parts[1] + &#x27; of Jerusalem&#x27;; }
       }
       var html = &#x27;&lt;div class=&quot;map-detail-card&quot;&gt;&#x27; +
         &#x27;&lt;div class=&quot;map-detail-name&quot;&gt;&#x27; + escHtml(site.name) + &#x27;&lt;/div&gt;&#x27; +
@@ -9159,6 +9160,8 @@ showOnboarding();
 &lt;head&gt;
 &lt;meta charset=&quot;UTF-8&quot;&gt;
 &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+&lt;meta http-equiv=&quot;Content-Security-Policy&quot; content=&quot;default-src &#x27;none&#x27;; script-src &#x27;unsafe-inline&#x27;; style-src &#x27;unsafe-inline&#x27;; img-src &#x27;none&#x27;; connect-src &#x27;none&#x27;; font-src &#x27;none&#x27;; object-src &#x27;none&#x27;; frame-src &#x27;none&#x27;; base-uri &#x27;none&#x27;; form-action &#x27;none&#x27;;&quot;&gt;
+&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot;&gt;
 &lt;title&gt;Revelation Reading Companion&lt;/title&gt;
 &lt;style&gt;
 
@@ -9754,7 +9757,7 @@ var zChLbl={patmos:[-5,1.5,&#x27;end&#x27;],ephesus:[5,2,&#x27;start&#x27;],smyr
 
 if(activeMapSite!==&#x27;jerusalem&#x27;&amp;&amp;!isZ){svg+=&#x27;&lt;circle cx=&quot;&#x27;+jx+&#x27;&quot; cy=&quot;&#x27;+jy+&#x27;&quot; r=&quot;8&quot; fill=&quot;var(--map-ring)&quot;/&gt;&#x27;;}
 
-var distMap={patmos:345,ephesus:290,smyrna:295,pergamum:330,thyatira:310,sardis:295,philadelphia:290,laodicea:280,rome:1430,megiddo:56,hierapolis:275,babylon_city:541,egypt_sym:250};
+var distMap={patmos:&quot;345 NW&quot;,ephesus:&quot;290 NW&quot;,smyrna:&quot;295 NW&quot;,pergamum:&quot;330 NW&quot;,thyatira:&quot;310 NW&quot;,sardis:&quot;295 NW&quot;,philadelphia:&quot;290 NW&quot;,laodicea:&quot;280 NW&quot;,rome:&quot;1430 NW&quot;,megiddo:&quot;56 N&quot;,hierapolis:&quot;275 NW&quot;,babylon_city:&quot;541 E&quot;,egypt_sym:&quot;250 SW&quot;};
 
 MAP_SITES.forEach(function(s){
 var isA=activeMapSite===s.id,isJ=s.id===&#x27;jerusalem&#x27;;
@@ -9803,7 +9806,7 @@ if(!s){dt.innerHTML=&#x27;&#x27;;return;}
 var o=&#x27;&lt;div class=&quot;map-detail&quot;&gt;&#x27;;
 o+=&#x27;&lt;button class=&quot;back-btn&quot; onclick=&quot;activeMapSite=null;renderMap()&quot;&gt;&amp;#9664; Deselect&lt;/button&gt;&#x27;;
 o+=&#x27;&lt;div class=&quot;detail-title&quot;&gt;&#x27;+escHtml(s.n)+&#x27;&lt;/div&gt;&#x27;;
-o+=&#x27;&lt;div class=&quot;detail-meta&quot;&gt;&#x27;+escHtml(s.mod)+(distMap[s.id]?&#x27; \u00b7 ~&#x27;+distMap[s.id]+&#x27; mi from Jerusalem&#x27;:&#x27;&#x27;)+&#x27;&lt;/div&gt;&#x27;;
+o+=&#x27;&lt;div class=&quot;detail-meta&quot;&gt;&#x27;+escHtml(s.mod)+(function(){var dd=distMap[s.id];if(!dd)return &#x27;&#x27;;var dp=dd.split(&#x27; &#x27;);return &#x27; \u00b7 ~&#x27;+dp[0]+&#x27; mi &#x27;+dp[1]+&#x27; of Jerusalem&#x27;;})()+&#x27;&lt;/div&gt;&#x27;;
 o+=&#x27;&lt;p style=&quot;margin:.5rem 0;font-size:.88rem&quot;&gt;&#x27;+escHtml(s.d)+&#x27;&lt;/p&gt;&#x27;;
 if(s.ev&amp;&amp;s.ev.length){
 o+=&#x27;&lt;div class=&quot;detail-section&quot;&gt;&lt;div class=&quot;detail-section-label&quot;&gt;Key Events in Revelation&lt;/div&gt;&#x27;;
@@ -10282,11 +10285,640 @@ function setMode(id){
 &lt;/body&gt;
 &lt;/html&gt;
 "></iframe>
+<iframe id="f-pr" class="h" sandbox="allow-scripts allow-same-origin allow-modals" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot; data-theme=&quot;light&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1.0,maximum-scale=1.0&quot;&gt;
+&lt;meta http-equiv=&quot;Content-Security-Policy&quot; content=&quot;default-src &#x27;none&#x27;; script-src &#x27;unsafe-inline&#x27;; style-src &#x27;unsafe-inline&#x27;; img-src &#x27;none&#x27;; connect-src &#x27;none&#x27;; font-src &#x27;none&#x27;; object-src &#x27;none&#x27;; frame-src &#x27;none&#x27;; base-uri &#x27;none&#x27;; form-action &#x27;none&#x27;;&quot;&gt;
+&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot;&gt;
+&lt;title&gt;Prayer Companion&lt;/title&gt;
+&lt;style&gt;
+:root,[data-theme=&quot;light&quot;]{
+  --bg:#f5f0e8;--bg2:#ece5d8;--bg3:#e0d7c8;--gold:#8b7028;--gold-bright:#6e5a22;
+  --tp:#2c2416;--ts:#5a4e3a;--tm:#8a7e6a;
+  --bd:rgba(90,70,30,0.15);--bdh:rgba(90,70,30,0.3);
+  --sh:rgba(0,0,0,0.06);
+  --card-bg:#fff;--card-bd:rgba(90,70,30,0.1);
+  --accent:#5a7a4a;--accent2:#6e5a22;
+  --quote-bg:#faf7f0;--quote-bd:rgba(139,112,40,0.15);
+  --chip-bg:rgba(90,70,30,0.08);--chip-active-bg:#6e5a22;--chip-active:#f5f0e8;
+  --toggle-bg:#d5cfc5;--toggle-knob:#fff;
+  --text-muted:#8a7e6a;
+}
+[data-theme=&quot;dark&quot;]{
+  --bg:#1a1612;--bg2:#241f1a;--bg3:#2e2720;--gold:#c9a84c;--gold-bright:#e8c95a;
+  --tp:#e8dcc8;--ts:#b8a88a;--tm:#6e6050;
+  --bd:rgba(201,168,76,0.12);--bdh:rgba(201,168,76,0.3);
+  --sh:rgba(0,0,0,0.3);
+  --card-bg:#241f1a;--card-bd:rgba(201,168,76,0.12);
+  --accent:#7aaa6a;--accent2:#c9a84c;
+  --quote-bg:#2e2720;--quote-bd:rgba(201,168,76,0.15);
+  --chip-bg:rgba(201,168,76,0.1);--chip-active-bg:#c9a84c;--chip-active:#1a1612;
+  --toggle-bg:#2e2720;--toggle-knob:#c9a84c;
+  --text-muted:#6e6050;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%;overflow-x:hidden}
+body{font-family:Georgia,&#x27;Times New Roman&#x27;,serif;background:var(--bg);color:var(--tp);line-height:1.6}
+.header{text-align:center;padding:1.2rem 1rem 0.8rem;position:relative}
+.header h1{font-size:1.45rem;font-weight:600;color:var(--tp);letter-spacing:-0.01em}
+.header .sub{font-size:0.72rem;color:var(--tm);font-style:italic;margin-top:0.15rem;font-family:-apple-system,sans-serif}
+.theme-toggle{position:absolute;right:1rem;top:1.2rem;display:flex;align-items:center;gap:6px;cursor:pointer;user-select:none}
+.theme-label{display:none}
+.toggle-track{width:44px;height:24px;background:var(--toggle-bg);border-radius:12px;position:relative;border:1px solid var(--bd);transition:background 0.3s}
+.toggle-knob{width:20px;height:20px;background:var(--toggle-knob);border-radius:50%;position:absolute;top:1px;left:2px;transition:left 0.3s;display:flex;align-items:center;justify-content:center;font-size:10px}
+[data-theme=&quot;dark&quot;] .toggle-knob{left:22px}
+.nav{display:flex;gap:0;border-bottom:1px solid var(--bd);background:var(--bg2);overflow-x:auto;-webkit-overflow-scrolling:touch}
+.nav button{flex:none;padding:9px 14px;font-size:0.72rem;font-family:-apple-system,sans-serif;font-weight:500;background:none;border:none;color:var(--tm);cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;transition:all 0.2s}
+.nav button.active{color:var(--gold);border-bottom-color:var(--gold);font-weight:600}
+.nav button:hover{color:var(--tp)}
+.search-wrap{padding:0.6rem 1rem}
+.search{width:100%;padding:0.55rem 0.8rem;border:1px solid var(--bd);border-radius:0.5rem;background:var(--card-bg);color:var(--tp);font-family:-apple-system,sans-serif;font-size:0.82rem}
+.search:focus{outline:none;border-color:var(--gold)}
+.search::placeholder{color:var(--tm)}
+.content{padding:0 1rem 2rem}
+.panel{display:none}
+.panel.active{display:block}
+/* Situation cards */
+.sit-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:0.5rem;margin-top:0.6rem}
+.sit-card{background:var(--card-bg);border:1px solid var(--card-bd);border-radius:0.5rem;padding:0.7rem;cursor:pointer;transition:all 0.2s;text-align:center}
+.sit-card:hover{border-color:var(--gold);transform:translateY(-1px);box-shadow:0 3px 10px var(--sh)}
+.sit-card.active{border-color:var(--gold);background:var(--quote-bg)}
+.sit-icon{font-size:1.4rem;margin-bottom:0.2rem}
+.sit-name{font-size:0.75rem;font-weight:600;color:var(--tp);font-family:-apple-system,sans-serif}
+.sit-count{font-size:0.62rem;color:var(--tm);font-family:-apple-system,sans-serif}
+/* Prayer detail */
+.sit-detail{margin-top:0.8rem}
+.prayer-card{background:var(--card-bg);border:1px solid var(--card-bd);border-radius:0.6rem;padding:0.85rem;margin-bottom:0.6rem;transition:border-color 0.2s}
+.prayer-card:hover{border-color:var(--bdh)}
+.prayer-who{font-size:0.68rem;font-weight:600;color:var(--gold);font-family:-apple-system,sans-serif;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.1rem}
+.prayer-ref{font-size:0.65rem;color:var(--tm);font-family:-apple-system,sans-serif;margin-bottom:0.4rem}
+.prayer-context{font-size:0.78rem;color:var(--ts);margin-bottom:0.4rem;line-height:1.55}
+.prayer-quote{background:var(--quote-bg);border-left:3px solid var(--gold);padding:0.55rem 0.75rem;border-radius:0 0.3rem 0.3rem 0;margin:0.4rem 0;font-style:italic;font-size:0.8rem;line-height:1.6;color:var(--tp)}
+.prayer-after{font-size:0.73rem;color:var(--accent);margin-top:0.35rem;font-family:-apple-system,sans-serif}
+.prayer-after strong{color:var(--gold)}
+.prayer-pattern{font-size:0.7rem;color:var(--tm);margin-top:0.25rem;font-family:-apple-system,sans-serif;font-style:italic}
+/* Patterns */
+.pattern-card{background:var(--card-bg);border:1px solid var(--card-bd);border-radius:0.6rem;padding:0.85rem 0.95rem;margin-bottom:0.6rem}
+.pattern-name{font-size:0.95rem;font-weight:600;color:var(--tp);margin-bottom:0.15rem}
+.pattern-source{font-size:0.65rem;color:var(--tm);font-family:-apple-system,sans-serif;margin-bottom:0.4rem}
+.pattern-desc{font-size:0.78rem;color:var(--ts);line-height:1.55;margin-bottom:0.5rem}
+.pattern-steps{list-style:none;padding:0}
+.pattern-steps li{padding:0.35rem 0 0.35rem 1.8rem;position:relative;font-size:0.76rem;color:var(--tp);line-height:1.5;border-bottom:1px solid var(--bd)}
+.pattern-steps li:last-child{border-bottom:none}
+.pattern-steps li::before{content:attr(data-step);position:absolute;left:0;top:0.35rem;width:1.3rem;height:1.3rem;background:var(--gold);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.58rem;font-weight:700;font-family:-apple-system,sans-serif}
+[data-theme=&quot;dark&quot;] .pattern-steps li::before{color:#1a1612}
+.pattern-example{font-size:0.72rem;color:var(--tm);font-style:italic;margin-top:0.1rem}
+/* Catalog */
+.cat-filters{display:flex;flex-wrap:wrap;gap:0.3rem;margin:0.5rem 0 0.6rem}
+.chip{display:inline-block;padding:0.3rem 0.65rem;font-size:0.68rem;font-family:-apple-system,sans-serif;border-radius:1rem;background:var(--chip-bg);color:var(--ts);cursor:pointer;border:1px solid transparent;transition:all 0.2s;white-space:nowrap}
+.chip.active{background:var(--chip-active-bg);color:var(--chip-active);border-color:var(--chip-active-bg)}
+.chip:hover{border-color:var(--bdh)}
+.catalog-row{display:flex;gap:0.6rem;padding:0.5rem 0;border-bottom:1px solid var(--bd);align-items:flex-start}
+.catalog-row:last-child{border-bottom:none}
+.cat-who{font-weight:600;font-size:0.73rem;color:var(--gold);min-width:70px;font-family:-apple-system,sans-serif}
+.cat-text{flex:1;font-size:0.76rem;color:var(--tp);line-height:1.5}
+.cat-ref{font-size:0.65rem;color:var(--tm);font-family:-apple-system,sans-serif;white-space:nowrap;min-width:80px;text-align:right}
+.cat-type{font-size:0.58rem;padding:0.15rem 0.4rem;border-radius:0.6rem;font-family:-apple-system,sans-serif;font-weight:500;display:inline-block;margin-top:0.15rem}
+.cat-type.praise{background:rgba(106,159,80,0.12);color:#5a8a3a}
+.cat-type.lament{background:rgba(160,80,60,0.12);color:#a0503c}
+.cat-type.petition{background:rgba(80,120,180,0.12);color:#4a78a0}
+.cat-type.confess{background:rgba(140,100,60,0.12);color:#8a643c}
+.cat-type.intercess{background:rgba(130,80,150,0.12);color:#7a4a8a}
+.cat-type.thanks{background:rgba(180,140,40,0.12);color:#8a6a1a}
+.cat-type.surrender{background:rgba(100,100,100,0.12);color:#666}
+/* Builder */
+.builder-section{margin-bottom:1rem}
+.builder-label{font-size:0.72rem;font-weight:600;color:var(--gold);font-family:-apple-system,sans-serif;margin-bottom:0.35rem;text-transform:uppercase;letter-spacing:0.06em}
+.builder-textarea{width:100%;min-height:60px;padding:0.55rem 0.7rem;border:1px solid var(--bd);border-radius:0.4rem;background:var(--card-bg);color:var(--tp);font-family:Georgia,serif;font-size:0.82rem;line-height:1.6;resize:vertical}
+.builder-textarea:focus{outline:none;border-color:var(--gold)}
+.builder-textarea::placeholder{color:var(--tm);font-style:italic}
+.builder-hint{font-size:0.65rem;color:var(--tm);font-family:-apple-system,sans-serif;font-style:italic;margin-top:0.2rem}
+.builder-output{background:var(--quote-bg);border:1px solid var(--quote-bd);border-radius:0.5rem;padding:0.8rem;margin-top:0.5rem;min-height:100px;font-size:0.82rem;line-height:1.65;white-space:pre-wrap}
+.copy-btn{display:inline-block;padding:0.45rem 1rem;background:var(--gold);color:#fff;border:none;border-radius:0.4rem;font-size:0.75rem;font-family:-apple-system,sans-serif;cursor:pointer;margin-top:0.5rem;transition:background 0.2s}
+.copy-btn:hover{background:var(--gold-bright)}
+.copy-btn.done{background:#2d6b3f}
+[data-theme=&quot;dark&quot;] .copy-btn{color:#1a1612}
+.welcome{background:var(--quote-bg);border:1px solid var(--card-bd);border-radius:0.6rem;padding:0.8rem 1rem;margin-bottom:0.8rem;font-size:0.82rem;line-height:1.6}
+.welcome h2{font-size:0.95rem;color:var(--gold);margin-bottom:0.3rem;font-weight:600}
+.welcome-dismiss{display:inline-block;padding:0.35rem 0.8rem;background:var(--gold);color:#fff;border:none;border-radius:0.4rem;font-size:0.72rem;font-family:-apple-system,sans-serif;cursor:pointer;margin-top:0.3rem}
+[data-theme=&quot;dark&quot;] .welcome-dismiss{color:#1a1612}
+.empty{text-align:center;padding:2rem 1rem;color:var(--tm);font-style:italic;font-size:0.82rem}
+@media(max-width:500px){
+  .header h1{font-size:1.2rem}
+  .sit-grid{grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:0.35rem}
+  .sit-card{padding:0.5rem 0.3rem}
+  .sit-icon{font-size:1.1rem}
+  .sit-name{font-size:0.68rem}
+  .catalog-row{flex-direction:column;gap:0.2rem}
+  .cat-ref{text-align:left}
+}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;header&quot;&gt;
+  &lt;h1&gt;Prayer Companion&lt;/h1&gt;
+  &lt;p class=&quot;sub&quot;&gt;150+ biblical prayers · 16 life situations · 6 prayer patterns · guided builder&lt;/p&gt;
+  &lt;div class=&quot;theme-toggle&quot; id=&quot;themeToggle&quot; title=&quot;Toggle theme&quot;&gt;
+    &lt;span class=&quot;theme-label&quot; id=&quot;themeLabel&quot;&gt;Light&lt;/span&gt;
+    &lt;div class=&quot;toggle-track&quot;&gt;&lt;div class=&quot;toggle-knob&quot; id=&quot;toggleKnob&quot;&gt;&amp;#9788;&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;nav&quot; id=&quot;navBar&quot;&gt;
+  &lt;button class=&quot;active&quot; onclick=&quot;showPanel(&#x27;situations&#x27;)&quot;&gt;By Situation&lt;/button&gt;
+  &lt;button onclick=&quot;showPanel(&#x27;patterns&#x27;)&quot;&gt;Prayer Patterns&lt;/button&gt;
+  &lt;button onclick=&quot;showPanel(&#x27;catalog&#x27;)&quot;&gt;All Prayers&lt;/button&gt;
+  &lt;button onclick=&quot;showPanel(&#x27;builder&#x27;)&quot;&gt;Prayer Builder&lt;/button&gt;
+&lt;/div&gt;
+&lt;div class=&quot;search-wrap&quot;&gt;
+  &lt;input class=&quot;search&quot; id=&quot;searchBox&quot; placeholder=&quot;Search prayers, people, situations...&quot; oninput=&quot;doSearch(this.value)&quot;&gt;
+&lt;/div&gt;
+&lt;div class=&quot;content&quot; id=&quot;mainContent&quot;&gt;
+
+&lt;!-- SITUATIONS PANEL --&gt;
+&lt;div class=&quot;panel active&quot; id=&quot;p-situations&quot;&gt;
+  &lt;div class=&quot;welcome&quot; id=&quot;welcomeBanner&quot;&gt;
+    &lt;h2&gt;✦ What are you bringing to God today?&lt;/h2&gt;
+    &lt;p&gt;Select what you&#x27;re going through. We&#x27;ll show you how people in Scripture prayed in that same place — and what happened when they did.&lt;/p&gt;
+    &lt;button class=&quot;welcome-dismiss&quot; onclick=&quot;this.parentElement.style.display=&#x27;none&#x27;;try{localStorage.setItem(&#x27;pr-welcomed&#x27;,&#x27;1&#x27;)}catch(e){}&quot;&gt;Got it, let&#x27;s go →&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;sit-grid&quot; id=&quot;sitGrid&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;sit-detail&quot; id=&quot;sitDetail&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- PATTERNS PANEL --&gt;
+&lt;div class=&quot;panel&quot; id=&quot;p-patterns&quot;&gt;&lt;/div&gt;
+
+&lt;!-- CATALOG PANEL --&gt;
+&lt;div class=&quot;panel&quot; id=&quot;p-catalog&quot;&gt;
+  &lt;div class=&quot;cat-filters&quot; id=&quot;catFilters&quot;&gt;&lt;/div&gt;
+  &lt;div id=&quot;catList&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- BUILDER PANEL --&gt;
+&lt;div class=&quot;panel&quot; id=&quot;p-builder&quot;&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;script&gt;
+// ═══ THEME ═══
+var isDark=false;
+try{var saved=localStorage.getItem(&#x27;theme-pr&#x27;);if(saved===&#x27;dark&#x27;)isDark=true;}catch(e){}
+if(isDark){document.documentElement.setAttribute(&#x27;data-theme&#x27;,&#x27;dark&#x27;);document.getElementById(&#x27;toggleKnob&#x27;).innerHTML=&#x27;&amp;#9790;&#x27;;}
+document.getElementById(&#x27;themeToggle&#x27;).onclick=function(){
+  isDark=!isDark;
+  try{localStorage.setItem(&#x27;theme-pr&#x27;,isDark?&#x27;dark&#x27;:&#x27;light&#x27;)}catch(e){}
+  document.documentElement.setAttribute(&#x27;data-theme&#x27;,isDark?&#x27;dark&#x27;:&#x27;light&#x27;);
+  document.getElementById(&#x27;toggleKnob&#x27;).innerHTML=isDark?&#x27;&amp;#9790;&#x27;:&#x27;&amp;#9788;&#x27;;
+};
+try{if(localStorage.getItem(&#x27;pr-welcomed&#x27;))document.getElementById(&#x27;welcomeBanner&#x27;).style.display=&#x27;none&#x27;;}catch(e){}
+
+// ═══ PRAYER DATA ═══
+var SITUATIONS = [
+  {id:&quot;anxious&quot;,icon:&quot;🛡️&quot;,name:&quot;Anxious or Afraid&quot;,prayers:[
+    {who:&quot;David&quot;,ref:&quot;Psalm 56:3–4&quot;,context:&quot;Captured by the Philistines in Gath — surrounded by enemies, alone, terrified.&quot;,quote:&quot;When I am afraid, I put my trust in you. In God, whose word I praise, in God I trust; I shall not be afraid. What can flesh do to me?&quot;,after:&quot;David was released unharmed. This psalm became a model for thousands of years of believers facing fear.&quot;,pattern:&quot;Name the fear honestly → declare trust → remember God&#x27;s faithfulness&quot;},
+    {who:&quot;Jehoshaphat&quot;,ref:&quot;2 Chronicles 20:12&quot;,context:&quot;Three enemy armies marching on Judah. Vastly outnumbered. No military solution.&quot;,quote:&quot;We do not know what to do, but our eyes are on you.&quot;,after:&quot;God told them they wouldn&#x27;t need to fight. They sent singers ahead of the army. The enemies destroyed each other.&quot;,pattern:&quot;Admit helplessness → fix eyes on God → act in faith before seeing the answer&quot;},
+    {who:&quot;David&quot;,ref:&quot;Psalm 23:4&quot;,context:&quot;A prayer-poem born from a life of running, fighting, hiding — yet walking with God through it all.&quot;,quote:&quot;Even though I walk through the valley of the shadow of death, I will fear no evil, for you are with me; your rod and your staff, they comfort me.&quot;,after:&quot;This became the most memorized chapter in all of Scripture — prayed at bedsides, battlefields, and funerals for 3,000 years.&quot;,pattern:&quot;Acknowledge the darkness → affirm God&#x27;s presence → find comfort in His protection&quot;},
+    {who:&quot;Jesus&quot;,ref:&quot;Matthew 26:39&quot;,context:&quot;In Gethsemane, the night before crucifixion. In anguish so deep His sweat fell like drops of blood (Luke 22:44).&quot;,quote:&quot;My Father, if it be possible, let this cup pass from me; nevertheless, not as I will, but as you will.&quot;,after:&quot;An angel came to strengthen Him (Luke 22:43). He rose and walked willingly to the cross.&quot;,pattern:&quot;Express the honest desire → surrender to God&#x27;s will → receive strength to move forward&quot;},
+    {who:&quot;Paul &amp; Silas&quot;,ref:&quot;Acts 16:25&quot;,context:&quot;Beaten, chained in the innermost cell of a Roman prison. Midnight. Bleeding.&quot;,quote:&quot;About midnight Paul and Silas were praying and singing hymns to God, and the prisoners were listening to them.&quot;,after:&quot;An earthquake opened every door and broke every chain. The jailer and his entire household believed.&quot;,pattern:&quot;Worship in the worst circumstance → God shows up in ways you could not orchestrate&quot;},
+    {who:&quot;David&quot;,ref:&quot;Psalm 27:1&quot;,context:&quot;Pursued by enemies, uncertain of survival, yet choosing trust.&quot;,quote:&quot;The LORD is my light and my salvation — whom shall I fear? The LORD is the stronghold of my life — of whom shall I be afraid?&quot;,after:&quot;David survived every threat and became Israel&#x27;s greatest king.&quot;,pattern:&quot;Declare who God is → let His identity answer your fears&quot;},
+    {who:&quot;Hezekiah&quot;,ref:&quot;Isaiah 37:15–20&quot;,context:&quot;The Assyrian army — the world&#x27;s mightiest — has surrounded Jerusalem. The commander is mocking God publicly.&quot;,quote:&quot;O LORD of hosts, God of Israel, enthroned above the cherubim, you are the God, you alone, of all the kingdoms of the earth... Save us, that all the kingdoms of the earth may know that you alone are the LORD.&quot;,after:&quot;That night an angel struck down 185,000 Assyrian soldiers. The siege ended without a single arrow fired (Isa 37:33,36).&quot;,pattern:&quot;Declare God&#x27;s sovereignty → present the specific threat → ask God to act for His own glory&quot;},
+    {who:&quot;Paul&quot;,ref:&quot;Philippians 4:6–7&quot;,context:&quot;Writing from prison to a church he loves. They&#x27;re worried about him. He&#x27;s worried about them. But he writes the Bible&#x27;s definitive instruction on anxiety.&quot;,quote:&quot;Do not be anxious about anything, but in everything by prayer and supplication with thanksgiving let your requests be made known to God. And the peace of God, which surpasses all understanding, will guard your hearts and your minds in Christ Jesus.&quot;,after:&quot;Paul practiced what he taught — he wrote this from a Roman prison cell, chained to a guard, facing possible execution. The peace wasn&#x27;t theoretical.&quot;,pattern:&quot;Replace anxiety with prayer → add thanksgiving (it shifts perspective) → receive a peace that doesn&#x27;t make logical sense but is real&quot;}
+  ]},
+  {id:&quot;grieving&quot;,icon:&quot;💔&quot;,name:&quot;Grieving or in Pain&quot;,prayers:[
+    {who:&quot;David&quot;,ref:&quot;Psalm 13:1–2&quot;,context:&quot;In deep sorrow — possibly the death of his child, or during Absalom&#x27;s betrayal.&quot;,quote:&quot;How long, O LORD? Will you forget me forever? How long will you hide your face from me? How long must I wrestle with my thoughts and day after day have sorrow in my heart?&quot;,after:&quot;By the end of this same psalm, David moves from anguish to singing: &#x27;I will sing the LORD&#x27;s praise, for he has been good to me.&#x27;&quot;,pattern:&quot;Ask &#x27;how long?&#x27; honestly → wrestle with pain before God → choose trust before feelings change&quot;},
+    {who:&quot;Job&quot;,ref:&quot;Job 1:20–21&quot;,context:&quot;Lost all ten children, all his livestock, all his servants — in a single day.&quot;,quote:&quot;Naked I came from my mother&#x27;s womb, and naked shall I return. The LORD gave, and the LORD has taken away; blessed be the name of the LORD.&quot;,after:&quot;&#x27;In all this Job did not sin or charge God with wrong.&#x27; Later, God restored double his possessions — and gave him ten more children.&quot;,pattern:&quot;Grieve fully → hold nothing back from God → bless His name even when it costs everything&quot;},
+    {who:&quot;Jeremiah&quot;,ref:&quot;Lamentations 3:22–23&quot;,context:&quot;Jerusalem has been destroyed. The Temple is gone. The people are dead or enslaved. Jeremiah wrote this while weeping over ruins.&quot;,quote:&quot;The steadfast love of the LORD never ceases; his mercies never come to an end; they are new every morning; great is your faithfulness.&quot;,after:&quot;This became one of the most quoted passages in all of Scripture — and the hymn &#x27;Great Is Thy Faithfulness.&#x27; Written not from a mountaintop but from ashes.&quot;,pattern:&quot;Let the grief be real → find God&#x27;s faithfulness IN the ruins, not after them&quot;},
+    {who:&quot;Jesus&quot;,ref:&quot;John 11:35&quot;,context:&quot;At the tomb of His friend Lazarus. Martha and Mary are weeping. Jesus knows He is about to raise Lazarus.&quot;,quote:&quot;Jesus wept.&quot;,after:&quot;He raised Lazarus from the dead minutes later. But He wept first. God grieves with us before He acts.&quot;,pattern:&quot;Weep — God Himself does. Grief is not weakness. Then trust that He is not finished.&quot;},
+    {who:&quot;Hannah&quot;,ref:&quot;1 Samuel 1:10–11&quot;,context:&quot;Years of infertility. Her rival mocked her. Even the priest thought she was drunk because of the intensity of her prayer.&quot;,quote:&quot;In her deep anguish Hannah prayed to the LORD, weeping bitterly. And she made a vow: &#x27;LORD Almighty, if you will only look on your servant&#x27;s misery and remember me...&#x27;&quot;,after:&quot;God gave her Samuel — who became one of the greatest prophets in Israel&#x27;s history. She later prayed one of the most magnificent praise songs in Scripture.&quot;,pattern:&quot;Pour out raw anguish → make the deepest surrender you can → God exceeds what you asked&quot;},
+    {who:&quot;David&quot;,ref:&quot;Psalm 34:18&quot;,context:&quot;Written after David escaped Abimelech by pretending to be insane — at one of his lowest, most humiliating moments.&quot;,quote:&quot;The LORD is near to the brokenhearted and saves the crushed in spirit.&quot;,after:&quot;David wrote this truth not from comfort but from experience. He had been broken. He knew God comes closest when we are lowest.&quot;,pattern:&quot;God doesn&#x27;t stand far off from your pain — He draws near to it. Brokenness is not a disqualifier; it&#x27;s an invitation.&quot;},
+    {who:&quot;Jesus&quot;,ref:&quot;Luke 23:46&quot;,context:&quot;The final breath. Three hours of darkness. The work of salvation complete.&quot;,quote:&quot;Father, into your hands I commit my spirit!&quot;,after:&quot;He breathed His last. The veil was torn. The centurion said, &#x27;Certainly this man was innocent.&#x27; Even in death, Jesus modeled how to face the end: with trust.&quot;,pattern:&quot;When there is nothing left to do — commit yourself to the Father&#x27;s hands. This is the prayer for the final moment.&quot;}
+  ]},
+  {id:&quot;thankful&quot;,icon:&quot;🙏&quot;,name:&quot;Thankful or Praising&quot;,prayers:[
+    {who:&quot;David&quot;,ref:&quot;Psalm 103:1–5&quot;,context:&quot;A psalm of pure thanksgiving — David reflecting on everything God has done.&quot;,quote:&quot;Bless the LORD, O my soul, and all that is within me, bless his holy name! Bless the LORD, O my soul, and forget not all his benefits — who forgives all your iniquity, who heals all your diseases, who redeems your life from the pit, who crowns you with steadfast love and mercy.&quot;,after:&quot;This psalm has been prayed in every century since David wrote it.&quot;,pattern:&quot;Command your own soul to worship → list specific blessings → declare who God is&quot;},
+    {who:&quot;Mary&quot;,ref:&quot;Luke 1:46–55&quot;,context:&quot;A teenage girl just told she will bear the Messiah. Visiting Elizabeth. Overcome with awe.&quot;,quote:&quot;My soul magnifies the Lord, and my spirit rejoices in God my Savior, for he has looked on the humble estate of his servant. For he who is mighty has done great things for me, and holy is his name.&quot;,after:&quot;The Magnificat — one of the most sung prayers in Christian history. Mary understood her place in the story of redemption.&quot;,pattern:&quot;Magnify God above the circumstance → celebrate His character → see your story inside His story&quot;},
+    {who:&quot;Jonah&quot;,ref:&quot;Jonah 2:2, 9&quot;,context:&quot;Inside the belly of a great fish. Three days in darkness. This is his prayer FROM the fish — not after.&quot;,quote:&quot;I called out to the LORD, out of my distress, and he answered me; out of the belly of Sheol I cried, and you heard my voice... Salvation belongs to the LORD!&quot;,after:&quot;The fish vomited Jonah onto dry land. He went to Nineveh and an entire city repented.&quot;,pattern:&quot;Thank God while you&#x27;re still in the dark place → salvation belongs to Him, not to your circumstances&quot;},
+    {who:&quot;David&quot;,ref:&quot;1 Chronicles 29:10–13&quot;,context:&quot;David&#x27;s final public prayer — dedicating the materials for the Temple his son Solomon would build.&quot;,quote:&quot;Yours, O LORD, is the greatness and the power and the glory and the victory and the majesty, for all that is in the heavens and in the earth is yours. Yours is the kingdom, O LORD, and you are exalted as head above all.&quot;,after:&quot;Solomon built the Temple. When the Ark was placed inside, God&#x27;s glory filled the building so powerfully that the priests could not stand.&quot;,pattern:&quot;Declare God&#x27;s attributes → acknowledge everything comes from Him → give back to Him what was always His&quot;}
+  ]},
+  {id:&quot;guidance&quot;,icon:&quot;🧭&quot;,name:&quot;Seeking Direction&quot;,prayers:[
+    {who:&quot;Solomon&quot;,ref:&quot;1 Kings 3:7–9&quot;,context:&quot;Young king, just took the throne, overwhelmed by responsibility. God appears in a dream: &#x27;Ask for whatever you want.&#x27;&quot;,quote:&quot;I am but a little child. I do not know how to go out or come in... Give your servant therefore an understanding heart to govern your people, that I may discern between good and evil.&quot;,after:&quot;God was pleased he didn&#x27;t ask for wealth or power. He gave Solomon wisdom — and the wealth and honor too.&quot;,pattern:&quot;Acknowledge your inadequacy → ask for wisdom, not outcomes → let God add what He wants&quot;},
+    {who:&quot;Moses&quot;,ref:&quot;Exodus 33:15&quot;,context:&quot;After the golden calf disaster. God offers to send an angel instead of going personally.&quot;,quote:&quot;If your presence will not go with me, do not bring us up from here.&quot;,after:&quot;God relented: &#x27;My presence will go with you, and I will give you rest.&#x27; Moses valued God&#x27;s presence over God&#x27;s gifts.&quot;,pattern:&quot;Refuse to move without God&#x27;s presence → prefer His company over His blessings&quot;},
+    {who:&quot;Gideon&quot;,ref:&quot;Judges 6:36–40&quot;,context:&quot;Called to lead an army but unsure it&#x27;s really God. Sets out a fleece — twice.&quot;,quote:&quot;If you will save Israel by my hand, as you have said, behold, I am laying a fleece of wool on the threshing floor...&quot;,after:&quot;God patiently confirmed both times. Then reduced Gideon&#x27;s army from 32,000 to 300 — so victory would be unmistakably God&#x27;s.&quot;,pattern:&quot;It&#x27;s okay to ask for confirmation → God is patient with honest doubt → He may then ask you to trust bigger&quot;},
+    {who:&quot;The Early Church&quot;,ref:&quot;Acts 1:24–25&quot;,context:&quot;Choosing a replacement for Judas. The most important leadership decision of the newborn church.&quot;,quote:&quot;You, Lord, who know the hearts of all, show which one of these two you have chosen.&quot;,after:&quot;Matthias was chosen. The church moved forward unified.&quot;,pattern:&quot;Present the options honestly → ask God to reveal His choice → trust the outcome&quot;}
+  ]},
+  {id:&quot;confession&quot;,icon:&quot;🕊️&quot;,name:&quot;Confessing Sin&quot;,prayers:[
+    {who:&quot;David&quot;,ref:&quot;Psalm 51:1–4, 10&quot;,context:&quot;After Nathan confronted him about Bathsheba and Uriah. The worst moral failure of David&#x27;s life.&quot;,quote:&quot;Have mercy on me, O God, according to your steadfast love; according to your abundant mercy blot out my transgressions... Against you, you only, have I sinned and done what is evil in your sight... Create in me a clean heart, O God, and renew a right spirit within me.&quot;,after:&quot;God forgave David. The child died, but Solomon — the next son — would build God&#x27;s Temple. Psalm 51 became the church&#x27;s model prayer of repentance.&quot;,pattern:&quot;Appeal to God&#x27;s mercy, not your own goodness → be specific → ask for inner renewal, not just forgiveness&quot;},
+    {who:&quot;The Tax Collector&quot;,ref:&quot;Luke 18:13&quot;,context:&quot;Jesus&#x27; parable. A Pharisee and a tax collector both pray. The Pharisee lists his virtues. The tax collector...&quot;,quote:&quot;God, be merciful to me, a sinner!&quot;,after:&quot;Jesus said this man — not the religious expert — went home justified. Seven words. The shortest effective prayer in Scripture.&quot;,pattern:&quot;Don&#x27;t compare yourself to others → don&#x27;t list your merits → just ask for mercy&quot;},
+    {who:&quot;Daniel&quot;,ref:&quot;Daniel 9:4–6, 18–19&quot;,context:&quot;In Babylonian exile. Praying for his nation&#x27;s sin — not his own personal sins, but identifying with his people.&quot;,quote:&quot;O Lord, the great and awesome God, who keeps covenant and steadfast love... we have sinned and done wrong and acted wickedly... We do not present our pleas before you because of our righteousness, but because of your great mercy.&quot;,after:&quot;The angel Gabriel appeared with the prophecy of the seventy weeks — one of the most detailed messianic prophecies in Scripture.&quot;,pattern:&quot;Identify with corporate sin → appeal to God&#x27;s character, not your worthiness → receive revelation&quot;},
+    {who:&quot;The Prodigal Son&quot;,ref:&quot;Luke 15:21&quot;,context:&quot;Spent everything. Feeding pigs. Hungry. Comes home rehearsing a speech.&quot;,quote:&quot;Father, I have sinned against heaven and before you. I am no longer worthy to be called your son.&quot;,after:&quot;The father saw him from a distance, RAN to him, embraced him, and threw the biggest party the house had ever seen.&quot;,pattern:&quot;Come home — the Father is already watching the road → confess simply → receive more than you dared hope&quot;}
+  ]},
+  {id:&quot;strength&quot;,icon:&quot;💪&quot;,name:&quot;Needing Strength&quot;,prayers:[
+    {who:&quot;Paul&quot;,ref:&quot;Ephesians 3:16–19&quot;,context:&quot;Writing from prison. Praying for the church at Ephesus — and modeling what to pray when you need power.&quot;,quote:&quot;That according to the riches of his glory he may grant you to be strengthened with power through his Spirit in your inner being, so that Christ may dwell in your hearts through faith... that you may be filled with all the fullness of God.&quot;,after:&quot;The Ephesian church became one of the strongest in the ancient world. Paul&#x27;s prison letters became Scripture that has strengthened billions.&quot;,pattern:&quot;Ask for inner strength, not just changed circumstances → root strength in Christ&#x27;s presence → expect more than you can imagine&quot;},
+    {who:&quot;David&quot;,ref:&quot;Psalm 18:1–2&quot;,context:&quot;Delivered from Saul and all his enemies — looking back on decades of danger.&quot;,quote:&quot;I love you, O LORD, my strength. The LORD is my rock and my fortress and my deliverer, my God, my rock, in whom I take refuge, my shield, and the horn of my salvation, my stronghold.&quot;,after:&quot;David piled up seven metaphors because one wasn&#x27;t enough. This is what accumulated trust sounds like.&quot;,pattern:&quot;Stack up who God is until the weight of His character overwhelms your weakness&quot;},
+    {who:&quot;Habakkuk&quot;,ref:&quot;Habakkuk 3:17–19&quot;,context:&quot;Facing the Babylonian invasion. Everything about to be destroyed — farms, flocks, livelihood.&quot;,quote:&quot;Though the fig tree should not blossom, nor fruit be on the vines... yet I will rejoice in the LORD; I will take joy in the God of my salvation. God, the Lord, is my strength; he makes my feet like the deer&#x27;s; he makes me tread on the heights.&quot;,after:&quot;The most defiant declaration of faith in the Old Testament. Joy chosen before deliverance arrives.&quot;,pattern:&quot;Name the worst-case scenario → choose joy anyway → declare God your strength in advance&quot;},
+    {who:&quot;The Sons of Korah&quot;,ref:&quot;Psalm 46:1–3, 10&quot;,context:&quot;Earthquakes, floods, nations raging — everything unstable. Written in the chaos.&quot;,quote:&quot;God is our refuge and strength, a very present help in trouble. Therefore we will not fear though the earth gives way, though the mountains be moved into the heart of the sea... Be still, and know that I am God.&quot;,after:&quot;Martin Luther turned this into &#x27;A Mighty Fortress Is Our God.&#x27; The psalm has strengthened believers through wars, plagues, and persecutions for 3,000 years.&quot;,pattern:&quot;Declare God your refuge FIRST → list the worst that could happen → then be still. Stillness is not passivity — it&#x27;s trust under pressure.&quot;},
+    {who:&quot;Isaiah (for Israel)&quot;,ref:&quot;Isaiah 40:29–31&quot;,context:&quot;Spoken to exiles. People who had lost everything. Exhausted, displaced, wondering if God had forgotten them.&quot;,quote:&quot;He gives power to the faint, and to him who has no might he increases strength. Even youths shall faint and be weary, and young men shall fall exhausted; but they who wait for the LORD shall renew their strength; they shall mount up with wings like eagles; they shall run and not be weary; they shall walk and not faint.&quot;,after:&quot;This promise sustained a nation through exile and return. It has sustained believers through every exhaustion since.&quot;,pattern:&quot;Acknowledge you have no strength left → wait on God (not passively, but expectantly) → He exchanges your exhaustion for His power&quot;}
+  ]},
+  {id:&quot;others&quot;,icon:&quot;🤝&quot;,name:&quot;Praying for Others&quot;,prayers:[
+    {who:&quot;Abraham&quot;,ref:&quot;Genesis 18:23–25&quot;,context:&quot;God reveals He&#x27;s about to destroy Sodom. Abraham&#x27;s nephew Lot lives there.&quot;,quote:&quot;Will you indeed sweep away the righteous with the wicked?... Far be it from you to do such a thing... Shall not the Judge of all the earth do what is just?&quot;,after:&quot;Abraham negotiated from 50 righteous down to 10. God saved Lot&#x27;s family even though the city fell.&quot;,pattern:&quot;Appeal to God&#x27;s justice and character → be bold → persist&quot;},
+    {who:&quot;Jesus&quot;,ref:&quot;John 17:20–21&quot;,context:&quot;The night before His death. His final recorded prayer. For every future believer — including you.&quot;,quote:&quot;I do not ask for these only, but also for those who will believe in me through their word, that they may all be one, just as you, Father, are in me, and I in you.&quot;,after:&quot;2,000 years later, 2.4 billion people bear His name. This prayer is still being answered.&quot;,pattern:&quot;Pray beyond the present → pray for people you&#x27;ll never meet → pray for unity&quot;},
+    {who:&quot;Paul&quot;,ref:&quot;Colossians 1:9–12&quot;,context:&quot;Paul praying for a church he&#x27;s never visited. A model for how to pray for anyone.&quot;,quote:&quot;We have not ceased to pray for you, asking that you may be filled with the knowledge of his will in all spiritual wisdom and understanding, so as to walk in a manner worthy of the Lord, fully pleasing to him.&quot;,after:&quot;The Colossian church received one of the most theologically rich letters in the New Testament.&quot;,pattern:&quot;Pray for wisdom → pray for worthy living → pray for endurance and joy&quot;},
+    {who:&quot;Moses&quot;,ref:&quot;Exodus 32:31–32&quot;,context:&quot;Israel made the golden calf. God threatens to destroy them. Moses goes back up the mountain.&quot;,quote:&quot;Alas, this people have sinned a great sin... But now, if you will forgive their sin — but if not, please blot me out of your book that you have written.&quot;,after:&quot;God relented. Moses was willing to be damned for his people. Paul later expressed the same wish (Romans 9:3).&quot;,pattern:&quot;Stand in the gap → offer yourself → God honors sacrificial intercession&quot;},
+    {who:&quot;Epaphras&quot;,ref:&quot;Colossians 4:12&quot;,context:&quot;Paul describes Epaphras — a man most Christians have never heard of — who prayed so hard for his church that Paul took notice from prison.&quot;,quote:&quot;Epaphras, who is one of you, a servant of Christ Jesus, greets you, always struggling on your behalf in his prayers, that you may stand mature and fully assured in all the will of God.&quot;,after:&quot;The Greek word for &#x27;struggling&#x27; is agonizomenos — where we get &#x27;agonizing.&#x27; This man agonized in prayer for people he couldn&#x27;t physically reach.&quot;,pattern:&quot;Some intercession is agonizing work — not comfortable, not brief. Pray until you&#x27;ve wrestled.&quot;},
+    {who:&quot;Jesus&quot;,ref:&quot;Luke 23:34&quot;,context:&quot;Nailed to the cross. Soldiers gambling for His clothes below. The crowd mocking. His first words are not for Himself.&quot;,quote:&quot;Father, forgive them, for they know not what they do.&quot;,after:&quot;He prayed for the people killing Him. Stephen echoed this exact prayer as he was stoned (Acts 7:60). This is the highest form of prayer for others — for your enemies.&quot;,pattern:&quot;Pray for the people who have hurt you most → they don&#x27;t know what they&#x27;re doing → forgiveness is the ultimate intercession&quot;}
+  ]},
+  {id:&quot;healing&quot;,icon:&quot;🙌&quot;,name:&quot;For Healing&quot;,prayers:[
+    {who:&quot;Hezekiah&quot;,ref:&quot;2 Kings 20:2–3&quot;,context:&quot;The prophet Isaiah told him to put his affairs in order — he was going to die.&quot;,quote:&quot;Hezekiah turned his face to the wall and prayed to the LORD, &#x27;Please, O LORD, remember how I have walked before you in faithfulness and with a whole heart, and have done what is good in your sight.&#x27; And Hezekiah wept bitterly.&quot;,after:&quot;Before Isaiah left the palace grounds, God told him to go back: &#x27;I have heard your prayer and seen your tears. I will heal you. I will add fifteen years to your life.&#x27;&quot;,pattern:&quot;Turn to God immediately → be honest about your grief → God sees every tear&quot;},
+    {who:&quot;The Leper&quot;,ref:&quot;Mark 1:40&quot;,context:&quot;Leprosy made you untouchable, unclean, socially dead. This man broke every rule to approach Jesus.&quot;,quote:&quot;If you are willing, you can make me clean.&quot;,after:&quot;Jesus was moved with compassion. He touched him — nobody had touched a leper. &#x27;I am willing. Be clean.&#x27; Immediately the leprosy left.&quot;,pattern:&quot;Come to Jesus as you are → trust His willingness → His compassion precedes His power&quot;},
+    {who:&quot;Jairus&quot;,ref:&quot;Mark 5:23&quot;,context:&quot;A synagogue leader — a man of dignity and position — fell at Jesus&#x27; feet because his daughter was dying.&quot;,quote:&quot;My little daughter is at the point of death. Come and lay your hands on her, so that she may be made well and live.&quot;,after:&quot;The girl died before Jesus arrived. He told Jairus: &#x27;Do not fear, only believe.&#x27; Then He raised her.&quot;,pattern:&quot;Desperation breaks protocol → bring your most precious person to Jesus → &#x27;Do not fear, only believe&#x27;&quot;},
+    {who:&quot;The Bleeding Woman&quot;,ref:&quot;Mark 5:28, 34&quot;,context:&quot;Twelve years of hemorrhaging. Spent everything on doctors. Got worse, not better. Ceremonially unclean — couldn&#x27;t enter the Temple, couldn&#x27;t be touched.&quot;,quote:&quot;If I touch even his garments, I will be made well.&quot;,after:&quot;She touched His cloak in a crowd. Power left Jesus. He felt it and found her. &#x27;Daughter, your faith has made you well; go in peace, and be healed of your disease.&#x27;&quot;,pattern:&quot;Sometimes prayer is wordless — just reaching. Jesus felt the touch of faith among a pressing crowd. He stops for you.&quot;},
+    {who:&quot;James&quot;,ref:&quot;James 5:16&quot;,context:&quot;The apostle James teaching the early church how to pray for the sick — practically, communally.&quot;,quote:&quot;Therefore, confess your sins to one another and pray for one another, that you may be healed. The prayer of a righteous person has great power as it is working.&quot;,after:&quot;James grounds healing prayer in community and honesty. It&#x27;s not a formula — it&#x27;s vulnerability before God and before each other.&quot;,pattern:&quot;Pray together → be honest → the power is in God, not in your eloquence&quot;}
+  ]},
+  {id:&quot;abandoned&quot;,icon:&quot;🕯️&quot;,name:&quot;Feeling Abandoned&quot;,prayers:[
+    {who:&quot;David&quot;,ref:&quot;Psalm 22:1–2&quot;,context:&quot;A psalm that Jesus quoted from the cross. Written 1,000 years before crucifixion.&quot;,quote:&quot;My God, my God, why have you forsaken me? Why are you so far from saving me, from the words of my groaning? O my God, I cry by day, but you do not answer, and by night, but I find no rest.&quot;,after:&quot;This same psalm ends with: &#x27;He has done it!&#x27; (22:31). The cry of abandonment turns into a declaration of victory. Every complaint psalm in the Bible ends in trust.&quot;,pattern:&quot;Cry out the abandonment honestly → keep talking to God even when He seems silent → the psalm always turns&quot;},
+    {who:&quot;Elijah&quot;,ref:&quot;1 Kings 19:4&quot;,context:&quot;Just defeated 450 prophets of Baal on Mount Carmel. Then Jezebel threatened to kill him. He ran and collapsed under a tree.&quot;,quote:&quot;It is enough; now, O LORD, take away my life, for I am no better than my fathers.&quot;,after:&quot;God didn&#x27;t rebuke him. He sent an angel with food and water. Then He spoke — not in the earthquake or fire, but in a still small voice. And gave him a new assignment.&quot;,pattern:&quot;God handles your exhaustion with tenderness, not theology → rest → eat → listen for the quiet voice&quot;},
+    {who:&quot;The Sons of Korah&quot;,ref:&quot;Psalm 42:1–3, 5&quot;,context:&quot;In exile, far from Jerusalem. Cut off from the Temple, from worship, from the community of faith. People asking, &#x27;Where is your God?&#x27;&quot;,quote:&quot;As a deer pants for flowing streams, so pants my soul for you, O God. My soul thirsts for God, for the living God. When shall I come and appear before God? My tears have been my food day and night, while they say to me all the day long, &#x27;Where is your God?&#x27; ... Why are you cast down, O my soul, and why are you in turmoil within me? Hope in God; for I shall again praise him, my salvation and my God.&quot;,after:&quot;The psalmist talks TO his own soul — commands himself to hope. This is not denial; it&#x27;s the discipline of choosing hope while still in pain. He didn&#x27;t feel it yet, but he declared it.&quot;,pattern:&quot;Long for God openly → let the tears flow → then speak to your own soul → command hope before you feel it&quot;}
+  ]},
+  {id:&quot;worship&quot;,icon:&quot;✦&quot;,name:&quot;Pure Worship&quot;,prayers:[
+    {who:&quot;Isaiah&quot;,ref:&quot;Isaiah 6:3, 5, 8&quot;,context:&quot;Isaiah&#x27;s vision of God&#x27;s throne room. Seraphim cry out in worship — and Isaiah is undone.&quot;,quote:&quot;Holy, holy, holy is the LORD of hosts; the whole earth is full of his glory! ... Woe is me! For I am lost; for I am a man of unclean lips ... Here am I! Send me.&quot;,after:&quot;The seraphim&#x27;s cry shook the Temple. Isaiah saw God&#x27;s holiness and immediately saw his own sin. A burning coal cleansed him. Then came the call — and he said yes.&quot;,pattern:&quot;Encounter God&#x27;s holiness → recognize your own smallness → receive cleansing → receive calling&quot;},
+    {who:&quot;The Four Living Creatures&quot;,ref:&quot;Revelation 4:8&quot;,context:&quot;The throne room of heaven. The scene John saw in his vision.&quot;,quote:&quot;Holy, holy, holy, is the Lord God Almighty, who was and is and is to come!&quot;,after:&quot;The twenty-four elders fall down and cast their crowns before the throne. This worship never stops — it goes on day and night forever.&quot;,pattern:&quot;Worship is not a warm-up act. It is the main event of eternity.&quot;},
+    {who:&quot;David&quot;,ref:&quot;Psalm 8:1, 3–4&quot;,context:&quot;Looking at the night sky. Overwhelmed by God&#x27;s creation.&quot;,quote:&quot;O LORD, our Lord, how majestic is your name in all the earth! When I look at your heavens, the work of your fingers, the moon and the stars, which you have set in place — what is man that you are mindful of him?&quot;,after:&quot;This psalm moves from the cosmos to a baby&#x27;s cry. God&#x27;s power and God&#x27;s tenderness held together in nine verses.&quot;,pattern:&quot;Look up → feel small → marvel that this God knows your name&quot;}
+  ]},
+  {id:&quot;morning&quot;,icon:&quot;🌅&quot;,name:&quot;Morning Prayer&quot;,prayers:[
+    {who:&quot;David&quot;,ref:&quot;Psalm 5:3&quot;,context:&quot;Making prayer the first act of the day — a habit David practiced throughout his life.&quot;,quote:&quot;O LORD, in the morning you hear my voice; in the morning I direct my prayer to you and watch.&quot;,after:&quot;The Hebrew word for &#x27;watch&#x27; means to look expectantly — like a watchman scanning the horizon. Morning prayer sets the posture for the whole day.&quot;,pattern:&quot;Speak first → aim your prayers like arrows → then watch expectantly for God to move&quot;},
+    {who:&quot;Jesus&quot;,ref:&quot;Mark 1:35&quot;,context:&quot;After a massive day of healing and ministry. Everyone was looking for Him.&quot;,quote:&quot;And rising very early in the morning, while it was still dark, he departed to a desolate place, and there he prayed.&quot;,after:&quot;He returned with clear direction: &#x27;Let us go on to the next towns, that I may preach there also.&#x27; Morning prayer gave Him clarity about what to say yes and no to.&quot;,pattern:&quot;Rise before demands find you → seek solitude → receive direction for the day&quot;},
+    {who:&quot;David&quot;,ref:&quot;Psalm 143:8&quot;,context:&quot;In danger. Seeking God&#x27;s guidance for the path ahead.&quot;,quote:&quot;Let me hear in the morning of your steadfast love, for in you I trust. Make me know the way I should go, for to you I lift up my soul.&quot;,after:&quot;David consistently made morning the time for hearing from God.&quot;,pattern:&quot;Ask to hear God&#x27;s love first → trust → ask for direction → lift your soul&quot;}
+  ]},
+  {id:&quot;evening&quot;,icon:&quot;🌙&quot;,name:&quot;Evening Prayer&quot;,prayers:[
+    {who:&quot;David&quot;,ref:&quot;Psalm 4:8&quot;,context:&quot;Going to sleep surrounded by enemies. Choosing trust over anxiety.&quot;,quote:&quot;In peace I will both lie down and sleep; for you alone, O LORD, make me dwell in safety.&quot;,after:&quot;David slept. The God who doesn&#x27;t sleep kept watch.&quot;,pattern:&quot;Lay down the day → declare peace over your sleep → trust the God who never sleeps&quot;},
+    {who:&quot;David&quot;,ref:&quot;Psalm 63:6–8&quot;,context:&quot;In the wilderness of Judah. Night in the desert. Meditating on God.&quot;,quote:&quot;When I remember you upon my bed, and meditate on you in the watches of the night — for you have been my help, and in the shadow of your wings I will sing for joy. My soul clings to you; your right hand upholds me.&quot;,after:&quot;Nighttime reflection on God&#x27;s faithfulness becomes fuel for joy.&quot;,pattern:&quot;Remember God&#x27;s help in the darkness → cling → sing even in the night&quot;}
+  ]},
+  {id:&quot;justice&quot;,icon:&quot;⚖️&quot;,name:&quot;Crying Out for Justice&quot;,prayers:[
+    {who:&quot;The Souls Under the Altar&quot;,ref:&quot;Revelation 6:10&quot;,context:&quot;Martyrs in heaven. Those killed for their faith. Still waiting for justice.&quot;,quote:&quot;O Sovereign Lord, holy and true, how long before you will judge and avenge our blood on those who dwell on the earth?&quot;,after:&quot;They were given white robes and told to rest a little longer. Justice is coming — and it is certain.&quot;,pattern:&quot;The cry for justice is holy → God receives it → His timeline is not ours, but His justice is perfect&quot;},
+    {who:&quot;David&quot;,ref:&quot;Psalm 10:1, 17–18&quot;,context:&quot;Watching the wicked prosper while the poor are crushed.&quot;,quote:&quot;Why, O LORD, do you stand far away? Why do you hide yourself in times of trouble?... O LORD, you hear the desire of the afflicted; you will strengthen their heart; you will incline your ear to do justice to the fatherless and the oppressed.&quot;,after:&quot;The psalm moves from &#x27;why are you far away?&#x27; to &#x27;you hear, you strengthen, you will act.&#x27;&quot;,pattern:&quot;Ask &#x27;why?&#x27; → trust that God hears the afflicted → know that justice belongs to Him&quot;}
+  ]},
+  {id:&quot;doubt&quot;,icon:&quot;❓&quot;,name:&quot;Wrestling with Doubt&quot;,prayers:[
+    {who:&quot;The Father of the Boy&quot;,ref:&quot;Mark 9:24&quot;,context:&quot;His son has been tormented since childhood. He&#x27;s tried everything. He comes to Jesus but struggles to believe.&quot;,quote:&quot;I believe; help my unbelief!&quot;,after:&quot;Jesus healed the boy. He didn&#x27;t demand perfect faith first. He honored the honest admission.&quot;,pattern:&quot;Bring whatever faith you have — even if it&#x27;s mixed with doubt → ask Jesus to meet you where you are&quot;},
+    {who:&quot;Thomas&quot;,ref:&quot;John 20:28&quot;,context:&quot;Refused to believe Jesus had risen. Demanded to see and touch the wounds.&quot;,quote:&quot;My Lord and my God!&quot;,after:&quot;When Jesus appeared and offered His wounds, Thomas made the highest declaration of faith in any Gospel. Jesus said those who believe without seeing are blessed — but He didn&#x27;t reject Thomas for needing evidence.&quot;,pattern:&quot;Doubt expressed TO Jesus is not the same as walking away → bring your questions → He shows up&quot;},
+    {who:&quot;Habakkuk&quot;,ref:&quot;Habakkuk 1:2–3&quot;,context:&quot;Watching injustice. Wondering why God allows evil to go unpunished.&quot;,quote:&quot;O LORD, how long shall I cry for help, and you will not hear? Or cry to you &#x27;Violence!&#x27; and you will not save?&quot;,after:&quot;God&#x27;s answer was bigger and more disturbing than Habakkuk expected. But by chapter 3, Habakkuk is dancing on the heights.&quot;,pattern:&quot;Complain to God (not about God) → listen for His answer → it may be bigger than you expected → worship anyway&quot;}
+  ]},
+  {id:&quot;decision&quot;,icon:&quot;🔀&quot;,name:&quot;Before a Decision&quot;,prayers:[
+    {who:&quot;Jesus&quot;,ref:&quot;Luke 6:12–13&quot;,context:&quot;About to choose the twelve apostles — the most consequential leadership team in history.&quot;,quote:&quot;In these days he went out to the mountain to pray, and all night he continued in prayer to God. And when day came, he called his disciples and chose from them twelve.&quot;,after:&quot;He prayed all night. Then chose. Including Judas — which means God&#x27;s guidance includes paths through suffering.&quot;,pattern:&quot;The bigger the decision, the longer the prayer → pray through, not just about → then act decisively&quot;},
+    {who:&quot;Nehemiah&quot;,ref:&quot;Nehemiah 2:4–5&quot;,context:&quot;Standing before the king of Persia. Asked why he looks sad. One chance to speak. The wrong words could mean death.&quot;,quote:&quot;So I prayed to the God of heaven. Then I said to the king...&quot;,after:&quot;Nehemiah prayed in real-time — between the question and his answer. The king granted everything he asked.&quot;,pattern:&quot;Pray in the moment → you don&#x27;t always need hours — sometimes you need seconds of honest dependence&quot;},
+    {who:&quot;Joshua&quot;,ref:&quot;Joshua 7:7–9&quot;,context:&quot;Israel just lost the battle of Ai after their victory at Jericho. Joshua is confused and afraid.&quot;,quote:&quot;Alas, O Lord GOD, why have you brought this people over the Jordan at all, to give us into the hands of the Amorites, to destroy us?&quot;,after:&quot;God told him to get up — there was sin in the camp (Achan&#x27;s theft). The prayer revealed that something hidden was blocking progress.&quot;,pattern:&quot;When things go wrong after going right → bring confusion to God → He will reveal what you can&#x27;t see&quot;}
+  ]}
+];
+
+var PATTERNS = [
+  {name:&quot;The Lord&#x27;s Prayer&quot;,source:&quot;Matthew 6:9–13 — Taught by Jesus&quot;,desc:&quot;The prayer Jesus gave as a model. Not a formula to recite but a structure to follow. Every petition teaches a priority.&quot;,
+   steps:[
+     {label:&quot;Our Father in heaven&quot;,desc:&quot;Start with relationship. You are approaching a Father, not a judge. &#x27;Our&#x27; — never pray alone.&quot;,ex:&quot;&#x27;Father, I come to you as your child...&#x27;&quot;},
+     {label:&quot;Hallowed be your name&quot;,desc:&quot;Worship first. Align your heart with who God is before asking for what you want.&quot;,ex:&quot;&#x27;Your name is holy. I honor who you are...&#x27;&quot;},
+     {label:&quot;Your kingdom come, your will be done&quot;,desc:&quot;Surrender. Pray for God&#x27;s agenda before your own.&quot;,ex:&quot;&#x27;Let your purposes advance — in my life and in the world...&#x27;&quot;},
+     {label:&quot;Give us this day our daily bread&quot;,desc:&quot;Ask for needs — but daily, not hoarded. Trust for today.&quot;,ex:&quot;&#x27;Provide what I need for today — no more, no less...&#x27;&quot;},
+     {label:&quot;Forgive us our debts, as we forgive our debtors&quot;,desc:&quot;Confession linked to forgiveness of others. You can&#x27;t hold grudges and receive grace simultaneously.&quot;,ex:&quot;&#x27;Forgive me for _____. I release _____ from what they owe me...&#x27;&quot;},
+     {label:&quot;Lead us not into temptation, but deliver us from evil&quot;,desc:&quot;Ask for protection — both from subtle temptation and direct attack.&quot;,ex:&quot;&#x27;Guard my steps today. Protect me from what I can&#x27;t see coming...&#x27;&quot;}
+   ]},
+  {name:&quot;ACTS Pattern&quot;,source:&quot;Classic Christian devotional framework&quot;,desc:&quot;A widely-used prayer structure that ensures balance: worship, honesty, gratitude, and asking.&quot;,
+   steps:[
+     {label:&quot;Adoration&quot;,desc:&quot;Begin by praising God for who He is — not for what He&#x27;s done, but for His character.&quot;,ex:&quot;&#x27;God, you are faithful. You are sovereign. You are kind...&#x27;&quot;},
+     {label:&quot;Confession&quot;,desc:&quot;Be honest about sin. Specific is better than vague. God already knows — confession is for your freedom.&quot;,ex:&quot;&#x27;I confess that I was selfish when... I was dishonest about...&#x27;&quot;},
+     {label:&quot;Thanksgiving&quot;,desc:&quot;Thank God for specific things. This shifts perspective from what&#x27;s wrong to what&#x27;s been given.&quot;,ex:&quot;&#x27;Thank you for... my health, this morning, that conversation...&#x27;&quot;},
+     {label:&quot;Supplication&quot;,desc:&quot;Now ask. For yourself and others. Be bold — the earlier steps have aligned your heart.&quot;,ex:&quot;&#x27;I ask for... wisdom in this decision, healing for..., strength to...&#x27;&quot;}
+   ]},
+  {name:&quot;The Psalms&#x27; Complaint Arc&quot;,source:&quot;Found in Psalms 13, 22, 42, 77, 88 and others&quot;,desc:&quot;Most psalms of lament follow the same emotional journey. This isn&#x27;t a formula — it&#x27;s how honest prayer naturally moves when you stay with God long enough.&quot;,
+   steps:[
+     {label:&quot;Address God directly&quot;,desc:&quot;Even complaints start with &#x27;My God&#x27; — you&#x27;re talking TO Him, not about Him.&quot;,ex:&quot;&#x27;O LORD...&#x27; &#x27;My God...&#x27; &#x27;How long?...&#x27;&quot;},
+     {label:&quot;Pour out the complaint&quot;,desc:&quot;Be raw. Be specific. Hold nothing back. God is not fragile.&quot;,ex:&quot;&#x27;I feel abandoned. I am in pain. My enemies are winning. Where are you?&#x27;&quot;},
+     {label:&quot;Remember past faithfulness&quot;,desc:&quot;Mid-prayer, shift to memory. What has God done before?&quot;,ex:&quot;&#x27;But I remember when you... You have always...&#x27;&quot;},
+     {label:&quot;Choose trust&quot;,desc:&quot;This isn&#x27;t a feeling — it&#x27;s a decision. The psalmists chose trust while still in pain.&quot;,ex:&quot;&#x27;Yet I will trust you. I will praise you. You are still God.&#x27;&quot;},
+     {label:&quot;Praise or vow&quot;,desc:&quot;Most lament psalms end with praise — before the situation has changed.&quot;,ex:&quot;&#x27;I WILL sing to the LORD, for He has been good to me.&#x27;&quot;}
+   ]},
+  {name:&quot;Paul&#x27;s Intercession Model&quot;,source:&quot;Ephesians 1:17–19, 3:16–19; Colossians 1:9–12; Philippians 1:9–11&quot;,desc:&quot;Paul&#x27;s prayers for others never focus on comfort or circumstances. He prays for spiritual transformation. Study what Paul asks for and you&#x27;ll revolutionize how you pray for the people you love.&quot;,
+   steps:[
+     {label:&quot;Spiritual wisdom and revelation&quot;,desc:&quot;Paul prays for people to KNOW God better — not just know about Him.&quot;,ex:&quot;&#x27;God, give them eyes to see who you really are...&#x27;&quot;},
+     {label:&quot;Heart knowledge of hope and power&quot;,desc:&quot;Not intellectual — experiential. Know the hope, the riches, the power.&quot;,ex:&quot;&#x27;Let them experience the immensity of your power...&#x27;&quot;},
+     {label:&quot;Inner strengthening&quot;,desc:&quot;Strength in the inner being — where real life happens.&quot;,ex:&quot;&#x27;Strengthen them from the inside out through your Spirit...&#x27;&quot;},
+     {label:&quot;Rooted love&quot;,desc:&quot;That they would grasp the dimensions of Christ&#x27;s love.&quot;,ex:&quot;&#x27;May they comprehend the width, length, height, and depth of your love...&#x27;&quot;},
+     {label:&quot;Worthy walk and fruitfulness&quot;,desc:&quot;That their lives would match their calling.&quot;,ex:&quot;&#x27;Let every part of their life honor you and produce fruit...&#x27;&quot;}
+   ]},
+  {name:&quot;Hannah&#x27;s Model&quot;,source:&quot;1 Samuel 1:9–2:10&quot;,desc:&quot;Hannah&#x27;s prayer journey — from desperate anguish to total surrender to explosive praise — is the template for bringing your deepest pain to God.&quot;,
+   steps:[
+     {label:&quot;Anguish poured out&quot;,desc:&quot;Hannah was in &#x27;deep distress&#x27; and wept bitterly. She held nothing back.&quot;,ex:&quot;Bring the real pain. Don&#x27;t sanitize it. God can handle it.&quot;},
+     {label:&quot;Specific request&quot;,desc:&quot;She asked for a specific thing — a son. Not vague. Bold.&quot;,ex:&quot;Name exactly what you need. Be specific with God.&quot;},
+     {label:&quot;Deepest surrender&quot;,desc:&quot;She vowed to give back what she asked for. The request became an offering.&quot;,ex:&quot;&#x27;If you give me this, it belongs to you.&#x27; The ultimate surrender.&quot;},
+     {label:&quot;Peace before the answer&quot;,desc:&quot;After praying, &#x27;her face was no longer sad.&#x27; The answer hadn&#x27;t come yet.&quot;,ex:&quot;Prayer changes YOU before it changes your circumstances.&quot;},
+     {label:&quot;Explosive praise when answered&quot;,desc:&quot;Hannah&#x27;s song (1 Sam 2) is one of the most powerful praise songs in Scripture. Mary echoed it in her Magnificat.&quot;,ex:&quot;When God answers — respond with worship that matches the wait.&quot;}
+   ]},
+  {name:&quot;Jesus in Gethsemane&quot;,source:&quot;Matthew 26:36–46; Luke 22:39–46&quot;,desc:&quot;The most intimate and agonizing prayer ever prayed. If the Son of God prayed this way, so can you.&quot;,
+   steps:[
+     {label:&quot;Bring others near&quot;,desc:&quot;Jesus brought Peter, James, and John. He didn&#x27;t pray alone in His darkest hour.&quot;,ex:&quot;In your worst moments, don&#x27;t isolate. Bring someone close.&quot;},
+     {label:&quot;Express honest anguish&quot;,desc:&quot;&#x27;My soul is overwhelmed with sorrow to the point of death.&#x27; He named the pain.&quot;,ex:&quot;Tell God exactly how you feel. He already knows.&quot;},
+     {label:&quot;Ask for what you want&quot;,desc:&quot;&#x27;If it be possible, let this cup pass from me.&#x27; He made the request.&quot;,ex:&quot;It&#x27;s okay to ask God to remove the suffering.&quot;},
+     {label:&quot;Surrender to God&#x27;s will&quot;,desc:&quot;&#x27;Nevertheless, not as I will, but as you will.&#x27; The turn.&quot;,ex:&quot;After the honest request — release it. Trust God&#x27;s plan.&quot;},
+     {label:&quot;Receive strength to obey&quot;,desc:&quot;An angel came to strengthen Him. He rose and walked to the cross.&quot;,ex:&quot;Surrender doesn&#x27;t mean you feel better. It means you have strength to obey.&quot;}
+   ]}
+];
+
+// ═══ FULL PRAYER CATALOG ═══
+var CATALOG = [
+  {who:&quot;Moses&quot;,ref:&quot;Exodus 15:1–18&quot;,type:&quot;praise&quot;,summary:&quot;Song of the Sea — after crossing the Red Sea&quot;},
+  {who:&quot;Moses&quot;,ref:&quot;Exodus 32:11–14&quot;,type:&quot;intercess&quot;,summary:&quot;Intercession after the golden calf&quot;},
+  {who:&quot;Moses&quot;,ref:&quot;Exodus 33:18&quot;,type:&quot;petition&quot;,summary:&quot;&#x27;Show me your glory&#x27;&quot;},
+  {who:&quot;Moses&quot;,ref:&quot;Numbers 11:11–15&quot;,type:&quot;lament&quot;,summary:&quot;&#x27;Why have you dealt ill with your servant?&#x27;&quot;},
+  {who:&quot;Moses&quot;,ref:&quot;Deuteronomy 3:23–25&quot;,type:&quot;petition&quot;,summary:&quot;Begging to enter the Promised Land&quot;},
+  {who:&quot;Miriam&quot;,ref:&quot;Exodus 15:21&quot;,type:&quot;praise&quot;,summary:&quot;&#x27;Sing to the LORD, for he has triumphed gloriously&#x27;&quot;},
+  {who:&quot;Hannah&quot;,ref:&quot;1 Samuel 1:11&quot;,type:&quot;petition&quot;,summary:&quot;Prayer for a child — in deep anguish&quot;},
+  {who:&quot;Hannah&quot;,ref:&quot;1 Samuel 2:1–10&quot;,type:&quot;praise&quot;,summary:&quot;Song of praise after Samuel&#x27;s birth&quot;},
+  {who:&quot;Samuel&quot;,ref:&quot;1 Samuel 7:5–9&quot;,type:&quot;intercess&quot;,summary:&quot;Interceding for Israel against the Philistines&quot;},
+  {who:&quot;David&quot;,ref:&quot;2 Samuel 7:18–29&quot;,type:&quot;praise&quot;,summary:&quot;Response to God&#x27;s covenant promise&quot;},
+  {who:&quot;David&quot;,ref:&quot;Psalm 3&quot;,type:&quot;petition&quot;,summary:&quot;Morning prayer while fleeing Absalom&quot;},
+  {who:&quot;David&quot;,ref:&quot;Psalm 5:1–3&quot;,type:&quot;petition&quot;,summary:&quot;Morning prayer: &#x27;Give ear to my words&#x27;&quot;},
+  {who:&quot;David&quot;,ref:&quot;Psalm 6&quot;,type:&quot;lament&quot;,summary:&quot;&#x27;O LORD, do not rebuke me in your anger&#x27;&quot;},
+  {who:&quot;David&quot;,ref:&quot;Psalm 8&quot;,type:&quot;praise&quot;,summary:&quot;&#x27;How majestic is your name in all the earth&#x27;&quot;},
+  {who:&quot;David&quot;,ref:&quot;Psalm 13&quot;,type:&quot;lament&quot;,summary:&quot;&#x27;How long, O LORD? Will you forget me forever?&#x27;&quot;},
+  {who:&quot;David&quot;,ref:&quot;Psalm 16&quot;,type:&quot;praise&quot;,summary:&quot;&#x27;You make known to me the path of life&#x27;&quot;},
+  {who:&quot;David&quot;,ref:&quot;Psalm 18&quot;,type:&quot;praise&quot;,summary:&quot;Song of deliverance from all enemies&quot;},
+  {who:&quot;David&quot;,ref:&quot;Psalm 19&quot;,type:&quot;praise&quot;,summary:&quot;The heavens declare God&#x27;s glory&quot;},
+  {who:&quot;David&quot;,ref:&quot;Psalm 22&quot;,type:&quot;lament&quot;,summary:&quot;&#x27;My God, my God, why have you forsaken me?&#x27;&quot;},
+  {who:&quot;David&quot;,ref:&quot;Psalm 23&quot;,type:&quot;praise&quot;,summary:&quot;&#x27;The LORD is my shepherd&#x27;&quot;},
+  {who:&quot;David&quot;,ref:&quot;Psalm 24&quot;,type:&quot;praise&quot;,summary:&quot;&#x27;Lift up your heads, O gates!&#x27;&quot;},
+  {who:&quot;David&quot;,ref:&quot;Psalm 25&quot;,type:&quot;petition&quot;,summary:&quot;&#x27;To you, O LORD, I lift up my soul&#x27;&quot;},
+  {who:&quot;David&quot;,ref:&quot;Psalm 27&quot;,type:&quot;petition&quot;,summary:&quot;&#x27;The LORD is my light and my salvation&#x27;&quot;},
+  {who:&quot;David&quot;,ref:&quot;Psalm 32&quot;,type:&quot;thanks&quot;,summary:&quot;Joy of forgiveness after confession&quot;},
+  {who:&quot;David&quot;,ref:&quot;Psalm 34&quot;,type:&quot;praise&quot;,summary:&quot;&#x27;I will bless the LORD at all times&#x27;&quot;},
+  {who:&quot;David&quot;,ref:&quot;Psalm 38&quot;,type:&quot;confess&quot;,summary:&quot;&#x27;I confess my iniquity; I am sorry for my sin&#x27;&quot;},
+  {who:&quot;David&quot;,ref:&quot;Psalm 40&quot;,type:&quot;praise&quot;,summary:&quot;&#x27;He put a new song in my mouth&#x27;&quot;},
+  {who:&quot;David&quot;,ref:&quot;Psalm 42–43&quot;,type:&quot;lament&quot;,summary:&quot;&#x27;Why are you cast down, O my soul?&#x27;&quot;},
+  {who:&quot;David&quot;,ref:&quot;Psalm 46&quot;,type:&quot;praise&quot;,summary:&quot;&#x27;God is our refuge and strength&#x27;&quot;},
+  {who:&quot;David&quot;,ref:&quot;Psalm 51&quot;,type:&quot;confess&quot;,summary:&quot;Confession after Bathsheba — &#x27;Create in me a clean heart&#x27;&quot;},
+  {who:&quot;David&quot;,ref:&quot;Psalm 63&quot;,type:&quot;praise&quot;,summary:&quot;&#x27;My soul thirsts for you&#x27; — in the wilderness&quot;},
+  {who:&quot;David&quot;,ref:&quot;Psalm 86&quot;,type:&quot;petition&quot;,summary:&quot;&#x27;Incline your ear, O LORD, and answer me&#x27;&quot;},
+  {who:&quot;David&quot;,ref:&quot;Psalm 91&quot;,type:&quot;praise&quot;,summary:&quot;&#x27;He who dwells in the shelter of the Most High&#x27;&quot;},
+  {who:&quot;David&quot;,ref:&quot;Psalm 103&quot;,type:&quot;praise&quot;,summary:&quot;&#x27;Bless the LORD, O my soul&#x27;&quot;},
+  {who:&quot;David&quot;,ref:&quot;Psalm 139&quot;,type:&quot;praise&quot;,summary:&quot;&#x27;You have searched me and known me&#x27;&quot;},
+  {who:&quot;David&quot;,ref:&quot;Psalm 145&quot;,type:&quot;praise&quot;,summary:&quot;&#x27;I will extol you, my God and King&#x27;&quot;},
+  {who:&quot;David&quot;,ref:&quot;1 Chronicles 29:10–19&quot;,type:&quot;praise&quot;,summary:&quot;Final public prayer — dedicating the Temple materials&quot;},
+  {who:&quot;Solomon&quot;,ref:&quot;1 Kings 3:6–9&quot;,type:&quot;petition&quot;,summary:&quot;Asking for wisdom — &#x27;an understanding heart&#x27;&quot;},
+  {who:&quot;Solomon&quot;,ref:&quot;1 Kings 8:22–53&quot;,type:&quot;intercess&quot;,summary:&quot;Temple dedication prayer — the longest prayer in Scripture&quot;},
+  {who:&quot;Solomon&quot;,ref:&quot;Psalm 72&quot;,type:&quot;petition&quot;,summary:&quot;Prayer for the king — messianic overtones&quot;},
+  {who:&quot;Elijah&quot;,ref:&quot;1 Kings 18:36–37&quot;,type:&quot;petition&quot;,summary:&quot;On Mount Carmel: &#x27;Answer me, O LORD&#x27;&quot;},
+  {who:&quot;Elijah&quot;,ref:&quot;1 Kings 19:4&quot;,type:&quot;lament&quot;,summary:&quot;&#x27;Take away my life&#x27; — under the broom tree&quot;},
+  {who:&quot;Elisha&quot;,ref:&quot;2 Kings 6:17&quot;,type:&quot;petition&quot;,summary:&quot;&#x27;Open his eyes that he may see&#x27; — the heavenly army&quot;},
+  {who:&quot;Hezekiah&quot;,ref:&quot;2 Kings 19:15–19&quot;,type:&quot;petition&quot;,summary:&quot;Against Sennacherib&#x27;s siege of Jerusalem&quot;},
+  {who:&quot;Hezekiah&quot;,ref:&quot;2 Kings 20:2–3&quot;,type:&quot;petition&quot;,summary:&quot;Facing death — &#x27;Remember how I have walked before you&#x27;&quot;},
+  {who:&quot;Hezekiah&quot;,ref:&quot;Isaiah 38:10–20&quot;,type:&quot;praise&quot;,summary:&quot;Song of praise after healing&quot;},
+  {who:&quot;Jehoshaphat&quot;,ref:&quot;2 Chronicles 20:6–12&quot;,type:&quot;petition&quot;,summary:&quot;Facing three armies — &#x27;Our eyes are on you&#x27;&quot;},
+  {who:&quot;Jabez&quot;,ref:&quot;1 Chronicles 4:10&quot;,type:&quot;petition&quot;,summary:&quot;&#x27;Bless me and enlarge my territory&#x27;&quot;},
+  {who:&quot;Ezra&quot;,ref:&quot;Ezra 9:5–15&quot;,type:&quot;confess&quot;,summary:&quot;Confession for Israel&#x27;s intermarriage with pagans&quot;},
+  {who:&quot;Nehemiah&quot;,ref:&quot;Nehemiah 1:5–11&quot;,type:&quot;confess&quot;,summary:&quot;Confession and petition to rebuild Jerusalem&quot;},
+  {who:&quot;Nehemiah&quot;,ref:&quot;Nehemiah 2:4&quot;,type:&quot;petition&quot;,summary:&quot;Real-time prayer before the king — seconds of dependence&quot;},
+  {who:&quot;Job&quot;,ref:&quot;Job 1:20–21&quot;,type:&quot;surrender&quot;,summary:&quot;&#x27;The LORD gave, and the LORD has taken away&#x27;&quot;},
+  {who:&quot;Job&quot;,ref:&quot;Job 42:1–6&quot;,type:&quot;surrender&quot;,summary:&quot;&#x27;I had heard of you but now my eyes see you&#x27;&quot;},
+  {who:&quot;Isaiah&quot;,ref:&quot;Isaiah 6:5, 8&quot;,type:&quot;surrender&quot;,summary:&quot;&#x27;Woe is me! I am undone... Here am I, send me!&#x27;&quot;},
+  {who:&quot;Isaiah&quot;,ref:&quot;Isaiah 64:1–8&quot;,type:&quot;petition&quot;,summary:&quot;&#x27;Oh that you would rend the heavens and come down!&#x27;&quot;},
+  {who:&quot;Jeremiah&quot;,ref:&quot;Jeremiah 20:7–13&quot;,type:&quot;lament&quot;,summary:&quot;&#x27;You deceived me, LORD&#x27; — the most brutally honest prayer&quot;},
+  {who:&quot;Jeremiah&quot;,ref:&quot;Lamentations 3:22–26&quot;,type:&quot;praise&quot;,summary:&quot;&#x27;Great is your faithfulness&#x27; — from the ruins&quot;},
+  {who:&quot;Jeremiah&quot;,ref:&quot;Lamentations 5:1–22&quot;,type:&quot;lament&quot;,summary:&quot;&#x27;Remember, O LORD, what has befallen us&#x27;&quot;},
+  {who:&quot;Daniel&quot;,ref:&quot;Daniel 2:20–23&quot;,type:&quot;praise&quot;,summary:&quot;Praise after God revealed Nebuchadnezzar&#x27;s dream&quot;},
+  {who:&quot;Daniel&quot;,ref:&quot;Daniel 9:4–19&quot;,type:&quot;confess&quot;,summary:&quot;National confession and prayer for restoration&quot;},
+  {who:&quot;Jonah&quot;,ref:&quot;Jonah 2:1–9&quot;,type:&quot;praise&quot;,summary:&quot;Prayer from inside the fish — &#x27;Salvation belongs to the LORD&#x27;&quot;},
+  {who:&quot;Habakkuk&quot;,ref:&quot;Habakkuk 1:2–4&quot;,type:&quot;lament&quot;,summary:&quot;&#x27;How long, LORD?&#x27; — wrestling with injustice&quot;},
+  {who:&quot;Habakkuk&quot;,ref:&quot;Habakkuk 3:17–19&quot;,type:&quot;praise&quot;,summary:&quot;&#x27;Yet I will rejoice in the LORD&#x27; — defiant faith&quot;},
+  {who:&quot;Mary&quot;,ref:&quot;Luke 1:46–55&quot;,type:&quot;praise&quot;,summary:&quot;The Magnificat — &#x27;My soul magnifies the Lord&#x27;&quot;},
+  {who:&quot;Zechariah&quot;,ref:&quot;Luke 1:68–79&quot;,type:&quot;praise&quot;,summary:&quot;The Benedictus — prophecy after John&#x27;s birth&quot;},
+  {who:&quot;Simeon&quot;,ref:&quot;Luke 2:29–32&quot;,type:&quot;praise&quot;,summary:&quot;&#x27;Lord, now you are letting your servant depart in peace&#x27;&quot;},
+  {who:&quot;Jesus&quot;,ref:&quot;Matthew 6:9–13&quot;,type:&quot;petition&quot;,summary:&quot;The Lord&#x27;s Prayer — model for all prayer&quot;},
+  {who:&quot;Jesus&quot;,ref:&quot;Matthew 11:25–26&quot;,type:&quot;praise&quot;,summary:&quot;&#x27;I thank you, Father, that you have hidden these things from the wise&#x27;&quot;},
+  {who:&quot;Jesus&quot;,ref:&quot;Matthew 26:39,42&quot;,type:&quot;surrender&quot;,summary:&quot;Gethsemane — &#x27;Not as I will, but as you will&#x27;&quot;},
+  {who:&quot;Jesus&quot;,ref:&quot;Luke 23:34&quot;,type:&quot;intercess&quot;,summary:&quot;&#x27;Father, forgive them, for they know not what they do&#x27;&quot;},
+  {who:&quot;Jesus&quot;,ref:&quot;Luke 23:46&quot;,type:&quot;surrender&quot;,summary:&quot;&#x27;Father, into your hands I commit my spirit&#x27;&quot;},
+  {who:&quot;Jesus&quot;,ref:&quot;John 11:41–42&quot;,type:&quot;praise&quot;,summary:&quot;At Lazarus&#x27; tomb — &#x27;Father, I thank you that you have heard me&#x27;&quot;},
+  {who:&quot;Jesus&quot;,ref:&quot;John 17:1–26&quot;,type:&quot;intercess&quot;,summary:&quot;The High Priestly Prayer — for His disciples and all future believers&quot;},
+  {who:&quot;Jesus&quot;,ref:&quot;John 12:27–28&quot;,type:&quot;surrender&quot;,summary:&quot;&#x27;Father, glorify your name&#x27; — facing the cross&quot;},
+  {who:&quot;Stephen&quot;,ref:&quot;Acts 7:59–60&quot;,type:&quot;surrender&quot;,summary:&quot;&#x27;Lord Jesus, receive my spirit... do not hold this sin against them&#x27;&quot;},
+  {who:&quot;The Church&quot;,ref:&quot;Acts 4:24–30&quot;,type:&quot;petition&quot;,summary:&quot;After Peter and John arrested — praying for boldness&quot;},
+  {who:&quot;Paul&quot;,ref:&quot;Romans 11:33–36&quot;,type:&quot;praise&quot;,summary:&quot;&#x27;Oh, the depth of the riches and wisdom and knowledge of God!&#x27;&quot;},
+  {who:&quot;Paul&quot;,ref:&quot;Ephesians 1:17–21&quot;,type:&quot;intercess&quot;,summary:&quot;Prayer for spiritual wisdom and revelation&quot;},
+  {who:&quot;Paul&quot;,ref:&quot;Ephesians 3:14–21&quot;,type:&quot;intercess&quot;,summary:&quot;&#x27;That you may be filled with all the fullness of God&#x27;&quot;},
+  {who:&quot;Paul&quot;,ref:&quot;Philippians 1:9–11&quot;,type:&quot;intercess&quot;,summary:&quot;That their love may abound in knowledge and discernment&quot;},
+  {who:&quot;Paul&quot;,ref:&quot;Colossians 1:9–12&quot;,type:&quot;intercess&quot;,summary:&quot;For wisdom, worthy walk, and endurance with joy&quot;},
+  {who:&quot;Paul&quot;,ref:&quot;2 Corinthians 12:8–9&quot;,type:&quot;petition&quot;,summary:&quot;Three times asked God to remove the thorn — &#x27;My grace is sufficient&#x27;&quot;},
+  {who:&quot;Paul&quot;,ref:&quot;1 Thessalonians 3:11–13&quot;,type:&quot;intercess&quot;,summary:&quot;For love to increase and hearts to be strengthened&quot;},
+  {who:&quot;Paul&quot;,ref:&quot;2 Thessalonians 1:11–12&quot;,type:&quot;intercess&quot;,summary:&quot;That God would fulfill every resolve for good&quot;},
+  {who:&quot;The Elders&quot;,ref:&quot;Revelation 4:11&quot;,type:&quot;praise&quot;,summary:&quot;&#x27;Worthy are you, our Lord and God, to receive glory&#x27;&quot;},
+  {who:&quot;The Multitude&quot;,ref:&quot;Revelation 7:10&quot;,type:&quot;praise&quot;,summary:&quot;&#x27;Salvation belongs to our God&#x27;&quot;},
+  {who:&quot;The Martyrs&quot;,ref:&quot;Revelation 6:10&quot;,type:&quot;petition&quot;,summary:&quot;&#x27;How long before you judge and avenge our blood?&#x27;&quot;},
+  {who:&quot;All Creation&quot;,ref:&quot;Revelation 5:13&quot;,type:&quot;praise&quot;,summary:&quot;&#x27;To him who sits on the throne and to the Lamb be blessing and honor&#x27;&quot;},
+  {who:&quot;Epaphras&quot;,ref:&quot;Colossians 4:12&quot;,type:&quot;intercess&quot;,summary:&quot;Agonizing in prayer for the Colossian church&#x27;s maturity&quot;},
+  {who:&quot;The Bleeding Woman&quot;,ref:&quot;Mark 5:28&quot;,type:&quot;petition&quot;,summary:&quot;&#x27;If I touch even his garments, I will be made well&#x27;&quot;},
+  {who:&quot;Sons of Korah&quot;,ref:&quot;Psalm 42:1–5&quot;,type:&quot;lament&quot;,summary:&quot;&#x27;As a deer pants for flowing streams&#x27; — longing for God in exile&quot;},
+  {who:&quot;Sons of Korah&quot;,ref:&quot;Psalm 46:1–3, 10&quot;,type:&quot;praise&quot;,summary:&quot;&#x27;God is our refuge and strength&#x27; — &#x27;Be still and know&#x27;&quot;},
+  {who:&quot;Isaiah&quot;,ref:&quot;Isaiah 64:1–4&quot;,type:&quot;petition&quot;,summary:&quot;&#x27;Oh that you would rend the heavens and come down!&#x27;&quot;},
+  {who:&quot;James&quot;,ref:&quot;James 5:16&quot;,type:&quot;intercess&quot;,summary:&quot;&#x27;The prayer of a righteous person has great power&#x27;&quot;},
+  {who:&quot;David&quot;,ref:&quot;Psalm 34:18&quot;,type:&quot;praise&quot;,summary:&quot;&#x27;The LORD is near to the brokenhearted&#x27;&quot;}
+];
+
+// ═══ RENDERING ═══
+function escHtml(s){return s.replace(/&amp;/g,&#x27;&amp;amp;&#x27;).replace(/&lt;/g,&#x27;&amp;lt;&#x27;).replace(/&gt;/g,&#x27;&amp;gt;&#x27;).replace(/&quot;/g,&#x27;&amp;quot;&#x27;);}
+
+function showPanel(id){
+  document.querySelectorAll(&#x27;.panel&#x27;).forEach(function(p){p.classList.remove(&#x27;active&#x27;)});
+  document.getElementById(&#x27;p-&#x27;+id).classList.add(&#x27;active&#x27;);
+  document.querySelectorAll(&#x27;.nav button&#x27;).forEach(function(b,i){
+    b.classList.toggle(&#x27;active&#x27;,[&#x27;situations&#x27;,&#x27;patterns&#x27;,&#x27;catalog&#x27;,&#x27;builder&#x27;][i]===id);
+  });
+  if(id===&#x27;patterns&#x27;) renderPatterns();
+  if(id===&#x27;catalog&#x27;) renderCatalog();
+  if(id===&#x27;builder&#x27;) renderBuilder();
+}
+
+// ═══ SITUATIONS ═══
+var activeSit=null;
+function renderSituations(){
+  var grid=document.getElementById(&#x27;sitGrid&#x27;);
+  grid.innerHTML=SITUATIONS.map(function(s){
+    return &#x27;&lt;div class=&quot;sit-card&quot; id=&quot;sit-&#x27;+s.id+&#x27;&quot; onclick=&quot;selectSit(\&#x27;&#x27;+s.id+&#x27;\&#x27;)&quot;&gt;&#x27;+
+      &#x27;&lt;div class=&quot;sit-icon&quot;&gt;&#x27;+s.icon+&#x27;&lt;/div&gt;&#x27;+
+      &#x27;&lt;div class=&quot;sit-name&quot;&gt;&#x27;+escHtml(s.name)+&#x27;&lt;/div&gt;&#x27;+
+      &#x27;&lt;div class=&quot;sit-count&quot;&gt;&#x27;+s.prayers.length+&#x27; prayers&lt;/div&gt;&lt;/div&gt;&#x27;;
+  }).join(&#x27;&#x27;);
+}
+
+function selectSit(id){
+  var s=SITUATIONS.find(function(x){return x.id===id});
+  if(!s)return;
+  activeSit=id;
+  document.querySelectorAll(&#x27;.sit-card&#x27;).forEach(function(c){c.classList.toggle(&#x27;active&#x27;,c.id===&#x27;sit-&#x27;+id)});
+  var d=document.getElementById(&#x27;sitDetail&#x27;);
+  d.innerHTML=s.prayers.map(function(p){
+    return &#x27;&lt;div class=&quot;prayer-card&quot;&gt;&#x27;+
+      &#x27;&lt;div class=&quot;prayer-who&quot;&gt;&#x27;+escHtml(p.who)+&#x27;&lt;/div&gt;&#x27;+
+      &#x27;&lt;div class=&quot;prayer-ref&quot;&gt;&#x27;+escHtml(p.ref)+&#x27;&lt;/div&gt;&#x27;+
+      &#x27;&lt;div class=&quot;prayer-context&quot;&gt;&#x27;+escHtml(p.context)+&#x27;&lt;/div&gt;&#x27;+
+      &#x27;&lt;div class=&quot;prayer-quote&quot;&gt;&#x27;+escHtml(p.quote)+&#x27;&lt;/div&gt;&#x27;+
+      (p.after?&#x27;&lt;div class=&quot;prayer-after&quot;&gt;&lt;strong&gt;What happened:&lt;/strong&gt; &#x27;+escHtml(p.after)+&#x27;&lt;/div&gt;&#x27;:&#x27;&#x27;)+
+      (p.pattern?&#x27;&lt;div class=&quot;prayer-pattern&quot;&gt;Pattern: &#x27;+escHtml(p.pattern)+&#x27;&lt;/div&gt;&#x27;:&#x27;&#x27;)+
+    &#x27;&lt;/div&gt;&#x27;;
+  }).join(&#x27;&#x27;);
+  d.scrollIntoView({behavior:&#x27;smooth&#x27;,block:&#x27;start&#x27;});
+}
+
+// ═══ PATTERNS ═══
+function renderPatterns(){
+  var el=document.getElementById(&#x27;p-patterns&#x27;);
+  if(el.children.length&gt;0)return;
+  el.innerHTML=PATTERNS.map(function(p){
+    return &#x27;&lt;div class=&quot;pattern-card&quot;&gt;&#x27;+
+      &#x27;&lt;div class=&quot;pattern-name&quot;&gt;&#x27;+escHtml(p.name)+&#x27;&lt;/div&gt;&#x27;+
+      &#x27;&lt;div class=&quot;pattern-source&quot;&gt;&#x27;+escHtml(p.source)+&#x27;&lt;/div&gt;&#x27;+
+      &#x27;&lt;div class=&quot;pattern-desc&quot;&gt;&#x27;+escHtml(p.desc)+&#x27;&lt;/div&gt;&#x27;+
+      &#x27;&lt;ol class=&quot;pattern-steps&quot;&gt;&#x27;+p.steps.map(function(s,i){
+        return &#x27;&lt;li data-step=&quot;&#x27;+(i+1)+&#x27;&quot;&gt;&lt;strong&gt;&#x27;+escHtml(s.label)+&#x27;&lt;/strong&gt;&lt;br&gt;&#x27;+escHtml(s.desc)+
+          (s.ex?&#x27;&lt;div class=&quot;pattern-example&quot;&gt;&#x27;+escHtml(s.ex)+&#x27;&lt;/div&gt;&#x27;:&#x27;&#x27;)+
+        &#x27;&lt;/li&gt;&#x27;;
+      }).join(&#x27;&#x27;)+&#x27;&lt;/ol&gt;&lt;/div&gt;&#x27;;
+  }).join(&#x27;&#x27;);
+}
+
+// ═══ CATALOG ═══
+var catFilter=&#x27;all&#x27;;
+function renderCatalog(){
+  var types=[&#x27;all&#x27;,&#x27;praise&#x27;,&#x27;lament&#x27;,&#x27;petition&#x27;,&#x27;confess&#x27;,&#x27;intercess&#x27;,&#x27;thanks&#x27;,&#x27;surrender&#x27;];
+  var labels=[&#x27;All&#x27;,&#x27;Praise&#x27;,&#x27;Lament&#x27;,&#x27;Petition&#x27;,&#x27;Confession&#x27;,&#x27;Intercession&#x27;,&#x27;Thanksgiving&#x27;,&#x27;Surrender&#x27;];
+  var f=document.getElementById(&#x27;catFilters&#x27;);
+  if(!f.children.length){
+    f.innerHTML=types.map(function(t,i){
+      return &#x27;&lt;span class=&quot;chip&#x27;+(t===catFilter?&#x27; active&#x27;:&#x27;&#x27;)+&#x27;&quot; onclick=&quot;setCatFilter(\&#x27;&#x27;+t+&#x27;\&#x27;)&quot;&gt;&#x27;+labels[i]+&#x27; &#x27;+(t===&#x27;all&#x27;?CATALOG.length:CATALOG.filter(function(c){return c.type===t}).length)+&#x27;&lt;/span&gt;&#x27;;
+    }).join(&#x27;&#x27;);
+  }
+  var list=catFilter===&#x27;all&#x27;?CATALOG:CATALOG.filter(function(c){return c.type===catFilter});
+  document.getElementById(&#x27;catList&#x27;).innerHTML=list.map(function(c){
+    return &#x27;&lt;div class=&quot;catalog-row&quot;&gt;&#x27;+
+      &#x27;&lt;div class=&quot;cat-who&quot;&gt;&#x27;+escHtml(c.who)+&#x27;&lt;/div&gt;&#x27;+
+      &#x27;&lt;div class=&quot;cat-text&quot;&gt;&#x27;+escHtml(c.summary)+&#x27; &lt;span class=&quot;cat-type &#x27;+c.type+&#x27;&quot;&gt;&#x27;+c.type+&#x27;&lt;/span&gt;&lt;/div&gt;&#x27;+
+      &#x27;&lt;div class=&quot;cat-ref&quot;&gt;&#x27;+escHtml(c.ref)+&#x27;&lt;/div&gt;&lt;/div&gt;&#x27;;
+  }).join(&#x27;&#x27;);
+}
+function setCatFilter(t){
+  catFilter=t;
+  document.querySelectorAll(&#x27;#catFilters .chip&#x27;).forEach(function(c){c.classList.remove(&#x27;active&#x27;)});
+  event.target.classList.add(&#x27;active&#x27;);
+  renderCatalog();
+}
+
+// ═══ BUILDER ═══
+function renderBuilder(){
+  var el=document.getElementById(&#x27;p-builder&#x27;);
+  if(el.children.length&gt;0)return;
+  el.innerHTML=
+    &#x27;&lt;div class=&quot;welcome&quot; style=&quot;margin-bottom:0.8rem&quot;&gt;&lt;h2&gt;✦ Build Your Prayer&lt;/h2&gt;&lt;p&gt;Use the prompts below to compose a personal prayer following biblical patterns. Write as much or as little as you want in each section.&lt;/p&gt;&lt;/div&gt;&#x27;+
+    &#x27;&lt;div class=&quot;builder-section&quot;&gt;&lt;div class=&quot;builder-label&quot;&gt;1. Adoration — Who is God to you right now?&lt;/div&gt;&#x27;+
+    &#x27;&lt;textarea class=&quot;builder-textarea&quot; id=&quot;b1&quot; placeholder=&quot;God, you are...&quot; oninput=&quot;buildPreview()&quot;&gt;&lt;/textarea&gt;&#x27;+
+    &#x27;&lt;div class=&quot;builder-hint&quot;&gt;e.g., &quot;Father, you are faithful even when I cannot see the road ahead...&quot;&lt;/div&gt;&lt;/div&gt;&#x27;+
+    &#x27;&lt;div class=&quot;builder-section&quot;&gt;&lt;div class=&quot;builder-label&quot;&gt;2. Confession — What do you need to lay down?&lt;/div&gt;&#x27;+
+    &#x27;&lt;textarea class=&quot;builder-textarea&quot; id=&quot;b2&quot; placeholder=&quot;I confess...&quot; oninput=&quot;buildPreview()&quot;&gt;&lt;/textarea&gt;&#x27;+
+    &#x27;&lt;div class=&quot;builder-hint&quot;&gt;e.g., &quot;I confess that I have tried to control what only you can hold...&quot;&lt;/div&gt;&lt;/div&gt;&#x27;+
+    &#x27;&lt;div class=&quot;builder-section&quot;&gt;&lt;div class=&quot;builder-label&quot;&gt;3. Thanksgiving — What are you grateful for?&lt;/div&gt;&#x27;+
+    &#x27;&lt;textarea class=&quot;builder-textarea&quot; id=&quot;b3&quot; placeholder=&quot;Thank you for...&quot; oninput=&quot;buildPreview()&quot;&gt;&lt;/textarea&gt;&#x27;+
+    &#x27;&lt;div class=&quot;builder-hint&quot;&gt;e.g., &quot;Thank you for the breath in my lungs, for the people who love me...&quot;&lt;/div&gt;&lt;/div&gt;&#x27;+
+    &#x27;&lt;div class=&quot;builder-section&quot;&gt;&lt;div class=&quot;builder-label&quot;&gt;4. Supplication — What do you need?&lt;/div&gt;&#x27;+
+    &#x27;&lt;textarea class=&quot;builder-textarea&quot; id=&quot;b4&quot; placeholder=&quot;I ask you...&quot; oninput=&quot;buildPreview()&quot;&gt;&lt;/textarea&gt;&#x27;+
+    &#x27;&lt;div class=&quot;builder-hint&quot;&gt;e.g., &quot;Give me wisdom for this decision. Heal my friend. Strengthen my faith...&quot;&lt;/div&gt;&lt;/div&gt;&#x27;+
+    &#x27;&lt;div class=&quot;builder-section&quot;&gt;&lt;div class=&quot;builder-label&quot;&gt;5. Surrender — How will you close?&lt;/div&gt;&#x27;+
+    &#x27;&lt;textarea class=&quot;builder-textarea&quot; id=&quot;b5&quot; placeholder=&quot;Nevertheless, your will...&quot; oninput=&quot;buildPreview()&quot;&gt;&lt;/textarea&gt;&#x27;+
+    &#x27;&lt;div class=&quot;builder-hint&quot;&gt;e.g., &quot;Not my will but yours be done. I trust you with what I cannot see...&quot;&lt;/div&gt;&lt;/div&gt;&#x27;+
+    &#x27;&lt;div class=&quot;builder-label&quot; style=&quot;margin-top:0.8rem&quot;&gt;Your Prayer&lt;/div&gt;&#x27;+
+    &#x27;&lt;div class=&quot;builder-output&quot; id=&quot;bOut&quot;&gt;&lt;em style=&quot;color:var(--tm)&quot;&gt;Start writing above and your prayer will appear here...&lt;/em&gt;&lt;/div&gt;&#x27;+
+    &#x27;&lt;button class=&quot;copy-btn&quot; id=&quot;bCopy&quot; onclick=&quot;copyBuilt()&quot;&gt;📋 Copy prayer&lt;/button&gt;&#x27;;
+}
+function buildPreview(){
+  var v1=document.getElementById(&#x27;b1&#x27;).value.trim();
+  var v2=document.getElementById(&#x27;b2&#x27;).value.trim();
+  var v3=document.getElementById(&#x27;b3&#x27;).value.trim();
+  var v4=document.getElementById(&#x27;b4&#x27;).value.trim();
+  var v5=document.getElementById(&#x27;b5&#x27;).value.trim();
+  if(!v1&amp;&amp;!v2&amp;&amp;!v3&amp;&amp;!v4&amp;&amp;!v5){document.getElementById(&#x27;bOut&#x27;).innerHTML=&#x27;&lt;em style=&quot;color:var(--tm)&quot;&gt;Start writing above and your prayer will appear here...&lt;/em&gt;&#x27;;return;}
+  var lines=[];
+  if(v1){
+    var a=v1.charAt(0).toLowerCase()+v1.slice(1);
+    if(/^(god|lord|father|jesus|you)/i.test(v1))lines.push(v1.replace(/[.,;]*$/,&#x27;&#x27;)+&#x27;.&#x27;);
+    else lines.push(&#x27;God, you are &#x27;+a.replace(/[.,;]*$/,&#x27;&#x27;)+&#x27;.&#x27;);
+  }
+  if(v2){
+    var c=v2.charAt(0).toLowerCase()+v2.slice(1);
+    if(/^(i |lord|god|father|forgive)/i.test(v2))lines.push(v2.replace(/[.,;]*$/,&#x27;&#x27;)+&#x27;.&#x27;);
+    else lines.push(&#x27;I confess &#x27;+c.replace(/[.,;]*$/,&#x27;&#x27;)+&#x27;.&#x27;);
+  }
+  if(v3){
+    var t=v3.charAt(0).toLowerCase()+v3.slice(1);
+    if(/^(thank|i am|lord|god|father)/i.test(v3))lines.push(v3.replace(/[.,;]*$/,&#x27;&#x27;)+&#x27;.&#x27;);
+    else lines.push(&#x27;Thank you for &#x27;+t.replace(/[.,;]*$/,&#x27;&#x27;)+&#x27;.&#x27;);
+  }
+  if(v4){
+    var s=v4.charAt(0).toLowerCase()+v4.slice(1);
+    if(/^(i |lord|god|father|give|grant|help|please|show|lead|open|heal|protect|guide)/i.test(v4))lines.push(v4.replace(/[.,;]*$/,&#x27;&#x27;)+&#x27;.&#x27;);
+    else lines.push(&#x27;I ask for &#x27;+s.replace(/[.,;]*$/,&#x27;&#x27;)+&#x27;.&#x27;);
+  }
+  if(v5){
+    var u=v5;
+    if(/^(not |yet |but |nevertheless|i trust|i surrender|into your|your will|in your|amen)/i.test(v5))lines.push(u.replace(/[.,;]*$/,&#x27;&#x27;)+&#x27;.&#x27;);
+    else lines.push(&#x27;I place it all in your hands — &#x27;+u.charAt(0).toLowerCase()+u.slice(1).replace(/[.,;]*$/,&#x27;&#x27;)+&#x27;.&#x27;);
+  }
+  if(lines.length&amp;&amp;!/amen/i.test(lines[lines.length-1]))lines.push(&#x27;Amen.&#x27;);
+  document.getElementById(&#x27;bOut&#x27;).textContent=lines.join(&#x27;\n\n&#x27;);
+}
+function copyBuilt(){
+  var text=document.getElementById(&#x27;bOut&#x27;).textContent;
+  if(!text)return;
+  var btn=document.getElementById(&#x27;bCopy&#x27;);
+  if(navigator.clipboard&amp;&amp;navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(function(){btn.classList.add(&#x27;done&#x27;);btn.textContent=&#x27;✓ Copied!&#x27;;setTimeout(function(){btn.classList.remove(&#x27;done&#x27;);btn.textContent=&#x27;📋 Copy prayer&#x27;;},2000)});
+  }else{
+    var ta=document.createElement(&#x27;textarea&#x27;);ta.value=text;ta.style.cssText=&#x27;position:fixed;left:-9999px&#x27;;
+    document.body.appendChild(ta);ta.select();document.execCommand(&#x27;copy&#x27;);document.body.removeChild(ta);
+    btn.classList.add(&#x27;done&#x27;);btn.textContent=&#x27;✓ Copied!&#x27;;setTimeout(function(){btn.classList.remove(&#x27;done&#x27;);btn.textContent=&#x27;📋 Copy prayer&#x27;;},2000);
+  }
+}
+
+// ═══ SEARCH ═══
+function doSearch(q){
+  q=q.toLowerCase().trim();
+  if(!q){renderSituations();document.getElementById(&#x27;sitDetail&#x27;).innerHTML=&#x27;&#x27;;return;}
+  // Search across situations
+  var results=[];
+  SITUATIONS.forEach(function(s){
+    s.prayers.forEach(function(p){
+      if(p.who.toLowerCase().indexOf(q)&gt;-1||p.ref.toLowerCase().indexOf(q)&gt;-1||p.context.toLowerCase().indexOf(q)&gt;-1||p.quote.toLowerCase().indexOf(q)&gt;-1||s.name.toLowerCase().indexOf(q)&gt;-1){
+        results.push({sit:s.name,prayer:p});
+      }
+    });
+  });
+  var d=document.getElementById(&#x27;sitDetail&#x27;);
+  if(!results.length){d.innerHTML=&#x27;&lt;div class=&quot;empty&quot;&gt;No prayers found for &quot;&#x27;+escHtml(q)+&#x27;&quot;&lt;/div&gt;&#x27;;return;}
+  d.innerHTML=results.map(function(r){
+    return &#x27;&lt;div class=&quot;prayer-card&quot;&gt;&#x27;+
+      &#x27;&lt;div class=&quot;prayer-who&quot;&gt;&#x27;+escHtml(r.prayer.who)+&#x27; &lt;span style=&quot;color:var(--tm);font-weight:400;text-transform:none&quot;&gt;— &#x27;+escHtml(r.sit)+&#x27;&lt;/span&gt;&lt;/div&gt;&#x27;+
+      &#x27;&lt;div class=&quot;prayer-ref&quot;&gt;&#x27;+escHtml(r.prayer.ref)+&#x27;&lt;/div&gt;&#x27;+
+      &#x27;&lt;div class=&quot;prayer-context&quot;&gt;&#x27;+escHtml(r.prayer.context)+&#x27;&lt;/div&gt;&#x27;+
+      &#x27;&lt;div class=&quot;prayer-quote&quot;&gt;&#x27;+escHtml(r.prayer.quote)+&#x27;&lt;/div&gt;&#x27;+
+      (r.prayer.after?&#x27;&lt;div class=&quot;prayer-after&quot;&gt;&lt;strong&gt;What happened:&lt;/strong&gt; &#x27;+escHtml(r.prayer.after)+&#x27;&lt;/div&gt;&#x27;:&#x27;&#x27;)+
+    &#x27;&lt;/div&gt;&#x27;;
+  }).join(&#x27;&#x27;);
+}
+
+// ═══ INIT ═══
+renderSituations();
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+"></iframe>
+
 </div>
 
 <div class="disclaimer">
 <em>A study aid, not a substitute for Scripture.</em> &#8201; Reading notes and summaries reflect particular perspectives and may contain errors. Locations, dates, and authorship often involve scholarly debate. Always read the biblical text yourself and form your own understanding &#8212; that&#8217;s where the real discovery happens.
-<span class="ver">v1.1 &#8201;&#183;&#8201; February 22, 2026</span>
+<span class="ver">v1.3 &#8201;&#183;&#8201; February 23, 2026</span>
 </div>
 <script>
 // Handle URL open requests from sandboxed iframes
@@ -10298,7 +10930,7 @@ window.addEventListener('message', function(e) {
     }
   }
 });
-var tabs=['ot','nt','lc','rv','ai'];
+var tabs=['ot','nt','lc','rv','ai','pr'];
 var activeTab='ot';
 function sw(w){
   activeTab=w;
